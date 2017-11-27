@@ -1,0 +1,147 @@
+@charset "UTF-8";
+$tranBg: $blue;
+@mixin trans_all {
+    position: relative;
+    @include font-style(15px, null, null, null, null);
+    @include box(100%, 100%, $tranBg);
+}
+
+.trans_bg {
+    @include box(100%, 100%, $tranBg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+}
+
+.trans_ipad,
+.trans_iphone,
+.trans_pc {
+    @include box(100%, 100%, $tranBg);
+    display: none;
+    position: fixed;
+}
+
+// only for ipad in portrait
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+    .trans_bg {
+        display: block;
+    }
+    .trans_ipad {
+        @include box(100%, 100%, $blue);
+        display: block;
+        .trans_center {
+            @include allcenter;
+            text-align: center;
+            img {
+                width: 40%;
+                height: auto;
+            }
+            p {
+                @include font-style(20px, 500, $lineheight, white, $letterspace);
+                text-align: center;
+            }
+        }
+    }
+}
+
+// only for iphone4 in landscape
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
+    .trans_bg {
+        display: block;
+    }
+    .trans_iphone {
+        @include trans_all;
+        display: block;
+        position: absolute;
+        background-color: $tranBg;
+        .trans_center {
+            @include allcenter;
+            text-align: center;
+            img {
+                width: 20%;
+                height: auto;
+            }
+            p {
+                @include font-style(16px, 500, $lineheight, white, $letterspace);
+                text-align: center;
+            }
+        }
+    }
+}
+
+// only for iphone5 in landscape
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+    .trans_bg {
+        display: block;
+    }
+    .trans_iphone {
+        display: block;
+        @include trans_all;
+        position: absolute;
+        background-color: $tranBg;
+        .trans_center {
+            @include allcenter;
+            text-align: center;
+            img {
+                width: 20%;
+                height: auto;
+            }
+            p {
+                @include font-style(14px, 400, $lineheight, white, $letterspace);
+                text-align: center;
+            }
+        }
+    }
+}
+
+// only for iphone6 in landscape
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
+    .trans_bg {
+        display: block;
+    }
+    .trans_iphone {
+        display: block;
+        @include trans_all;
+        position: absolute;
+        background-color: $tranBg;
+        .trans_center {
+            @include allcenter;
+            text-align: center;
+            img {
+                width: 25%;
+                height: auto;
+            }
+            p {
+                @include font-style(15px, 400, $lineheight, white, $letterspace);
+                text-align: center;
+            }
+        }
+    }
+}
+
+// only for iphone6+ in landscape
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape) {
+    .trans_bg {
+        display: block;
+    }
+    .trans_iphone {
+        display: block;
+        @include trans_all;
+        position: absolute;
+        background-color: $tranBg;
+        .trans_center {
+            @include allcenter;
+            text-align: center;
+            img {
+                width: 30%;
+                height: auto;
+            }
+            p {
+                @include font-style(15px, 400, $lineheight, white, $letterspace);
+                text-align: center;
+            }
+        }
+    }
+}

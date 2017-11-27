@@ -1,0 +1,153 @@
+//box
+@mixin box($w, $h, $bg) {
+    width: $w;
+    height: $h;
+    background-color: $bg;
+}
+
+// circle
+@mixin circle($unit) {
+    width: $unit;
+    height: $unit;
+    border-radius: 100%;
+}
+
+// image scale with box
+@mixin img-scale {
+    >img {
+        @include box(100%, auto, null);
+        display: block;
+    }
+}
+
+// clear float
+%clear {
+    *zoom: 1;
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// text-pretty
+@mixin text-pretty {
+    text-align: justify;
+    text-justify: inter-ideograph;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+//absl
+@mixin absl($top, $right, $bottom, $left) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// mid
+@mixin allcenter {
+    @include absl(50%, null, null, 50%);
+    @include transform(translate(-50%, -50%));
+}
+
+// word writing_vertical-rl
+@mixin writing-vertical-rl {
+    // ie only
+    writing-mode: tb-rl; // other browser
+    -moz-writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+// vertical align
+@mixin v-align($h) {
+    &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 0;
+        height: $h;
+    }
+}
+
+//simple transform
+@mixin simple-transform($scale: false, $rotate: false, $trans-x: false, $trans-y: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false) {
+    @include create-transform(false, $scale, $scale, false, false, false, $rotate, false, $trans-x, $trans-y, false, $skew-x, $skew-y, $origin-x, $origin-y, false, false);
+}
+
+//create transform
+@mixin create-transform($perspective: false, $scale-x: false, $scale-y: false, $scale-z: false, $rotate-x: false, $rotate-y: false, $rotate-z: false, $rotate3d: false, $trans-x: false, $trans-y: false, $trans-z: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false, $origin-z: false, $only3d: false) {
+    $trans: unquote(""); // perspective
+    @if $perspective {
+        $trans: perspective($perspective);
+    } // scale
+    @if $scale-x and $scale-y {
+        @if $scale-z {
+            $trans: $trans scale3d($scale-x, $scale-y, $scale-z);
+        }
+        @else {
+            $trans: $trans scale($scale-x, $scale-y);
+        }
+    }
+    @else {
+        @if $scale-x {
+            $trans: $trans scaleX($scale-x);
+        }
+        @if $scale-y {
+            $trans: $trans scaleY($scale-y);
+        }
+        @if $scale-z {
+            $trans: $trans scaleZ($scale-z);
+        }
+    } // rotate
+    @if $rotate-x {
+        $trans: $trans rotateX($rotate-x);
+    }
+    @if $rotate-y {
+        $trans: $trans rotateY($rotate-y);
+    }
+    @if $rotate-z {
+        $trans: $trans rotateZ($rotate-z);
+    }
+    @if $rotate3d {
+        $trans: $trans rotate3d($rotate3d);
+    } // translate
+    @if $trans-x and $trans-y {
+        @if $trans-z {
+            $trans: $trans translate3d($trans-x, $trans-y, $trans-z);
+        }
+        @else {
+            $trans: $trans translate($trans-x, $trans-y);
+        }
+    }
+    @else {
+        @if $trans-x {
+            $trans: $trans translateX($trans-x);
+        }
+        @if $trans-y {
+            $trans: $trans translateY($trans-y);
+        }
+        @if $trans-z {
+            $trans: $trans translateZ($trans-z);
+        }
+    } // skew
+    @if $skew-x and $skew-y {
+        $trans: $trans skew($skew-x, $skew-y);
+    }
+    @else {
+        @if $skew-x {
+            $trans: $trans skewX($skew-x);
+        }
+        @if $skew-y {
+            $trans: $trans skewY($skew-y);
+        }
+    } // apply it!
+    @include transform($trans, $only3d);
+    @include transform-origin($origin-x, $origin-y, $origin-z, $only3d);
+}

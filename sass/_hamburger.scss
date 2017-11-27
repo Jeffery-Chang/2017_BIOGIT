@@ -1,0 +1,95 @@
+//hamburger css
+.menuToggle {
+    @include box(60px, 65px, null);
+    @include absl(0, 0, null, null);
+    display: block;
+    z-index: 100;
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: center;
+    padding: 15px 15px 0 0;
+    position: fixed;
+}
+
+.menuToggle input {
+    @include box(60px, 65px, null);
+    @include absl(0, 0, null, null);
+    display: block;
+    cursor: pointer;
+    opacity: 0;
+    /* hide this */
+    z-index: 2;
+    /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+    position: fixed;
+}
+
+.menuToggle > span {
+    @include box(35px, 2px, $blue);
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+    transform-origin: 0px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+    opacity 0.55s ease;
+}
+
+.menuToggle span:first-child {
+    transform-origin: 0% 0%;
+}
+
+.menuToggle span:nth-of-type(2) {
+    transform-origin: 0% 100%;
+}
+
+.menuToggle input:checked~span {
+    opacity: 1;
+    transform: rotate(45deg) translate(1px, -3px);
+    position: fixed;
+    background-color: white;
+}
+
+.menuToggle input:checked~span:nth-of-type(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+.menuToggle input:checked~span:nth-of-type(3) {
+    opacity: 1;
+    transform: rotate(-45deg) translate(1px, -1px);
+    position: fixed;
+    top: 40px;
+}
+
+.menu {
+    @include box(200px, 100vh, #4ea2d8);
+    @include transition(.3s ease-out);
+    background: url(../img/bg_menu.jpg) no-repeat bottom center #4ea2d8;
+    position: fixed;
+    top: 0;
+    right: -275px;
+    opacity: 0;
+    .con {
+        @include box(100%, auto, null);
+        @include allcenter;
+        ul {
+            margin-top: -50px;
+            li {
+                margin: 20px 0;
+                a {
+                    @include font-style(15px, $weight, $lineheight, white, $letterspace);
+                    display: inline-block;
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+.menuToggle input:checked~.menu {
+    right: 0px;
+    opacity: 1;
+}
