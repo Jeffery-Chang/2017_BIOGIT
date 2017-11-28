@@ -779,11 +779,11 @@ section.famous {
 
 .bg_2 {
   width: 100%;
-  background: url(../img/bg_2.jpg) no-repeat top center;
+  background: url(../img/bg_2.jpg) no-repeat top center #e4f0f8;
   padding-top: 200px; }
   @media only screen and (max-device-width: 736px) and (orientation: portrait) {
     .bg_2 {
-      background: url(../img/m_bg_2.jpg) no-repeat top center;
+      background: url(../img/m_bg_2.jpg) no-repeat top center #e4f0f8;
       background-size: 100%;
       padding-top: 150px; } }
 
@@ -801,33 +801,35 @@ section.pdt_block .cut_block {
   height: 600px; }
   section.pdt_block .cut_block p {
     position: absolute; }
-section.pdt_block .c_1 p.triggle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 20%;
-  opacity: 0.4; }
-  section.pdt_block .c_1 p.triggle > img {
-    width: 100%;
-    height: auto;
-    display: block; }
-section.pdt_block .c_1 p.gold a,
-section.pdt_block .c_1 p.purple a {
-  display: none; }
-section.pdt_block .c_1 p.gold {
-  bottom: 20px;
-  left: -50px; }
-section.pdt_block .c_1 p.purple {
-  bottom: 10px;
-  right: 50px; }
-section.pdt_block .c_1 p.bubble_gold {
-  top: 0px;
-  left: 295px; }
-section.pdt_block .c_1 p.bubble_purple {
-  top: 170px;
-  right: 240px; }
+section.pdt_block .c_1 {
+  display: block; }
+  section.pdt_block .c_1 p.triggle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 20%;
+    opacity: 0.4; }
+    section.pdt_block .c_1 p.triggle > img {
+      width: 100%;
+      height: auto;
+      display: block; }
+  section.pdt_block .c_1 p.gold a,
+  section.pdt_block .c_1 p.purple a {
+    display: none; }
+  section.pdt_block .c_1 p.gold {
+    bottom: 20px;
+    left: -50px; }
+  section.pdt_block .c_1 p.purple {
+    bottom: 10px;
+    right: 50px; }
+  section.pdt_block .c_1 p.bubble_gold {
+    top: 0px;
+    left: 295px; }
+  section.pdt_block .c_1 p.bubble_purple {
+    top: 170px;
+    right: 240px; }
 section.pdt_block .c_2 p.triangle {
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -866,98 +868,128 @@ section.pdt_block .c_2 p.board_gold {
   left: 0; }
 section.pdt_block .c_2 p.board_purple {
   right: 0; }
+section.pdt_block .m_pdtBlock {
+  display: none; }
 @media only screen and (max-device-width: 736px) and (orientation: portrait) {
   section.pdt_block {
     margin-bottom: 70px; }
     section.pdt_block .cut_block {
-      height: 300px; }
-    section.pdt_block .c_1 {
+      display: none; }
+    section.pdt_block .m_pdtBlock {
       display: block;
       font-size: 0;
       letter-spacing: 0;
-      margin-top: 30px; }
-      section.pdt_block .c_1 p.triggle {
-        margin-top: -50px; }
-      section.pdt_block .c_1 p.gold,
-      section.pdt_block .c_1 p.purple {
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%); }
-        section.pdt_block .c_1 p.gold > img,
-        section.pdt_block .c_1 p.purple > img {
-          width: 100%;
-          height: auto;
-          display: block; }
-        section.pdt_block .c_1 p.gold a,
-        section.pdt_block .c_1 p.purple a {
+      margin-top: 30px;
+      position: relative; }
+      section.pdt_block .m_pdtBlock .gold_block p.pdt > img,
+      section.pdt_block .m_pdtBlock .purple_block p.pdt > img {
+        width: 100%;
+        height: auto;
+        display: block; }
+      section.pdt_block .m_pdtBlock .gold_block p.pdt,
+      section.pdt_block .m_pdtBlock .gold_block .tt_box,
+      section.pdt_block .m_pdtBlock .purple_block p.pdt,
+      section.pdt_block .m_pdtBlock .purple_block .tt_box {
+        display: inline-block;
+        vertical-align: top; }
+      section.pdt_block .m_pdtBlock .gold_block .tt_box,
+      section.pdt_block .m_pdtBlock .purple_block .tt_box {
+        position: relative; }
+        section.pdt_block .m_pdtBlock .gold_block .tt_box p,
+        section.pdt_block .m_pdtBlock .purple_block .tt_box p {
+          width: 80%; }
+          section.pdt_block .m_pdtBlock .gold_block .tt_box p > img,
+          section.pdt_block .m_pdtBlock .purple_block .tt_box p > img {
+            width: 100%;
+            height: auto;
+            display: block; }
+        section.pdt_block .m_pdtBlock .gold_block .tt_box a.btn,
+        section.pdt_block .m_pdtBlock .purple_block .tt_box a.btn {
           display: block;
-          font-size: 0.8125rem;
-          font-weight: 300;
-          line-height: 1.2;
-          color: white;
-          width: 70px;
-          height: 70px;
-          border-radius: 100%;
-          position: absolute;
-          bottom: -10px;
-          padding: 17px 20px;
-          text-align: center; }
-          section.pdt_block .c_1 p.gold a:before, section.pdt_block .c_1 p.gold a:after,
-          section.pdt_block .c_1 p.purple a:before,
-          section.pdt_block .c_1 p.purple a:after {
-            content: '';
-            display: block;
-            width: 7px;
-            height: 2px;
-            background-color: white;
-            left: 50%;
-            bottom: 5px;
-            position: absolute; }
-          section.pdt_block .c_1 p.gold a:before,
-          section.pdt_block .c_1 p.purple a:before {
-            margin-left: -3px;
-            -webkit-transform:  rotateZ(30deg) translateX(-50%);
-            transform:  rotateZ(30deg) translateX(-50%); }
-          section.pdt_block .c_1 p.gold a:after,
-          section.pdt_block .c_1 p.purple a:after {
-            bottom: 9px;
-            margin-left: 3px;
-            -webkit-transform:  rotateZ(-30deg) translateX(-50%);
-            transform:  rotateZ(-30deg) translateX(-50%); }
-      section.pdt_block .c_1 p.gold {
-        margin-left: -120px;
-        width: 60%; }
-        section.pdt_block .c_1 p.gold a {
-          background-color: #987227;
-          left: 65px; }
-      section.pdt_block .c_1 p.purple {
-        margin-left: 100px;
-        width: 45%;
-        bottom: 18px; }
-        section.pdt_block .c_1 p.purple a {
-          background-color: #673ebd;
-          right: 10px; }
-      section.pdt_block .c_1 p.bubble_gold,
-      section.pdt_block .c_1 p.bubble_purple {
-        width: 25%; }
-        section.pdt_block .c_1 p.bubble_gold > img,
-        section.pdt_block .c_1 p.bubble_purple > img {
+          text-align: center;
+          width: 120px;
+          height: 45px;
+          font-size: 0.9375rem;
+          font-weight: 400;
+          line-height: 45px;
+          color: white; }
+      section.pdt_block .m_pdtBlock .gold_block .open,
+      section.pdt_block .m_pdtBlock .purple_block .open {
+        width: 80%;
+        margin: 20px auto 0; }
+        section.pdt_block .m_pdtBlock .gold_block .open > img,
+        section.pdt_block .m_pdtBlock .purple_block .open > img {
           width: 100%;
           height: auto;
           display: block; }
-      section.pdt_block .c_1 p.bubble_gold {
-        top: -10%;
-        left: 30%; }
-      section.pdt_block .c_1 p.bubble_purple {
-        top: 10%;
-        right: 15%; }
-    section.pdt_block .c_2 {
-      display: none; } }
+      section.pdt_block .m_pdtBlock .gold_block p.pdt {
+        width: 50%; }
+        section.pdt_block .m_pdtBlock .gold_block p.pdt img {
+          margin-left: -10px; }
+      section.pdt_block .m_pdtBlock .gold_block .tt_box {
+        width: 50%;
+        height: 220px; }
+        section.pdt_block .m_pdtBlock .gold_block .tt_box p {
+          position: absolute;
+          top: 5%;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+          section.pdt_block .m_pdtBlock .gold_block .tt_box p img {
+            margin-left: -40px; }
+        section.pdt_block .m_pdtBlock .gold_block .tt_box a.gold {
+          background: url(../img/btn_gold.png) no-repeat top center;
+          background-size: 100%;
+          position: absolute;
+          bottom: 0%;
+          left: 4%; }
+      section.pdt_block .m_pdtBlock .purple_block p.pdt {
+        width: 50%; }
+        section.pdt_block .m_pdtBlock .purple_block p.pdt img {
+          margin-left: 0px;
+          margin-top: 60px; }
+      section.pdt_block .m_pdtBlock .purple_block .tt_box {
+        width: 50%;
+        height: 220px; }
+        section.pdt_block .m_pdtBlock .purple_block .tt_box p {
+          position: absolute;
+          top: 5%;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+          section.pdt_block .m_pdtBlock .purple_block .tt_box p img {
+            margin-left: -40px; }
+        section.pdt_block .m_pdtBlock .purple_block .tt_box a.purple {
+          background: url(../img/btn_purple.png) no-repeat top center;
+          background-size: 100%;
+          position: absolute;
+          bottom: 0%;
+          left: 4%; } }
+@media only screen and (max-device-width: 413px) and (orientation: portrait) {
+  section.pdt_block .m_pdtBlock .gold_block .tt_box {
+    height: 207px; }
+  section.pdt_block .m_pdtBlock .gold_block .tt_box a.gold,
+  section.pdt_block .m_pdtBlock .purple_block .tt_box a.purple {
+    left: -1%; }
+  section.pdt_block .m_pdtBlock .purple_block .tt_box {
+    height: 205px; } }
+@media only screen and (max-device-width: 374px) and (orientation: portrait) {
+  section.pdt_block .m_pdtBlock .gold_block .tt_box {
+    height: 180px; }
+  section.pdt_block .m_pdtBlock .purple_block .tt_box {
+    height: 180px; }
+  section.pdt_block .m_pdtBlock .gold_block .tt_box a.btn,
+  section.pdt_block .m_pdtBlock .purple_block .tt_box a.btn {
+    width: 100px;
+    height: 35px;
+    font-size: 0.875rem;
+    line-height: 35px; } }
 
 /*==========================lottery==========================*/
 section.lottery {
   text-align: center;
-  padding-bottom: 150px; }
+  padding-bottom: 150px;
+  margin-top: 30px; }
   section.lottery h1 {
     width: 80%;
     margin: 0 auto;
@@ -1203,7 +1235,8 @@ section.lottery {
       width: 35%; }
     section.lottery .choose_block .purple_box p.pdt {
       bottom: 40px; }
-    section.lottery .choose_block .gold_box, section.lottery .choose_block .purple_box {
+    section.lottery .choose_block .gold_box,
+    section.lottery .choose_block .purple_box {
       height: 165px; }
     section.lottery .choose_block p.tt {
       padding: 0; } }
@@ -1234,32 +1267,32 @@ section.lottery {
       height: 100%;
       background-color: white;
       padding: 30px 20px; }
-    .pop section h1 {
+    .pop section .form h1 {
       font-size: 25px;
       font-size: 1.5625rem; }
-    .pop section h2 {
+    .pop section .form h2 {
       font-size: 18px;
       font-size: 1.125rem;
       font-weight: 400;
       line-height: 1.8; }
-      .pop section h2 b {
+      .pop section .form h2 b {
         font-size: 18px;
         font-size: 1.125rem;
         font-weight: 400; }
-    .pop section ul {
+    .pop section .form ul {
       margin: 20px auto 20px; }
-      .pop section ul li {
+      .pop section .form ul li {
         margin: 5px 0; }
-        .pop section ul li span,
-        .pop section ul li input {
+        .pop section .form ul li span,
+        .pop section .form ul li input {
           vertical-align: middle; }
-        .pop section ul li span {
+        .pop section .form ul li span {
           display: inline-block;
           margin-right: 20px;
           font-size: 15px;
           font-size: 0.9375rem;
           font-weight: 400; }
-        .pop section ul li input {
+        .pop section .form ul li input {
           width: 350px;
           height: 50px;
           border: none;
@@ -1268,14 +1301,31 @@ section.lottery {
           font-size: 14px;
           font-size: 0.875rem;
           font-weight: 400; }
-        .pop section ul li p {
+        .pop section .form ul li p {
           display: none; }
-    .pop section > p input {
+    .pop section .form > p input {
       border: 1px solid #333;
       width: 30px;
       height: 30px;
       background-color: white;
       display: inline-block; }
+    .pop section .success h1 {
+      font-size: 27px;
+      font-size: 1.6875rem;
+      font-weight: 500;
+      margin-top: 100px;
+      margin-bottom: 10px; }
+    .pop section .success h2 {
+      padding: 0 80px;
+      margin-bottom: 30px; }
+    .pop section .fail {
+      padding-top: 100px; }
+      .pop section .fail h1 {
+        font-size: 25px;
+        font-size: 1.5625rem;
+        font-weight: 500; }
+      .pop section .fail h2 {
+        margin-bottom: 30px; }
     .pop section a.btn {
       display: inline-block;
       margin: 20px 10px;
@@ -1286,6 +1336,13 @@ section.lottery {
       font-weight: 400;
       line-height: 57px;
       color: white; }
+      .pop section a.btn svg {
+        fill: white;
+        margin-right: 10px;
+        -webkit-transform: scale(0.9, 0.9);
+        transform: scale(0.9, 0.9);
+        vertical-align: middle;
+        margin-top: -3px; }
     .pop section a.reset {
       background: url(../img/btn_gray.png) no-repeat top center;
       background-size: 100%; }
@@ -1297,44 +1354,48 @@ section.lottery {
       background-size: 100%; }
   .pop section.gold {
     background-image: linear-gradient(135deg, #eee2c3 0%, #7d5210 50%, #f9f0d4 100%); }
-    .pop section.gold h2 b {
+    .pop section.gold .form h2 b {
       color: #ad8942; }
-    .pop section.gold ul li input {
+    .pop section.gold .form ul li input {
       background-color: #f5f3ec; }
-    .pop section.gold ul li ::-webkit-input-placeholder {
+    .pop section.gold .form ul li ::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       color: #989588; }
-    .pop section.gold ul li ::-moz-placeholder {
+    .pop section.gold .form ul li ::-moz-placeholder {
       /* Firefox 19+ */
       color: #989588; }
-    .pop section.gold ul li :-ms-input-placeholder {
+    .pop section.gold .form ul li :-ms-input-placeholder {
       /* IE 10+ */
       color: #989588; }
-    .pop section.gold ul li :-moz-placeholder {
+    .pop section.gold .form ul li :-moz-placeholder {
       /* Firefox 18- */
       color: #989588; }
+    .pop section.gold .success h1 {
+      color: #A9895A; }
     .pop section.gold .pdt {
       position: absolute;
       bottom: -60px;
       left: -60px; }
   .pop section.purple {
     background-image: linear-gradient(135deg, #c1acea 0%, #2925b2 50%, #afa7e7 100%); }
-    .pop section.purple h2 b {
+    .pop section.purple .form h2 b {
       color: #6126bb; }
-    .pop section.purple ul li input {
+    .pop section.purple .form ul li input {
       background-color: #f4f2f8; }
-    .pop section.purple ul li ::-webkit-input-placeholder {
+    .pop section.purple .form ul li ::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       color: #8a80a0; }
-    .pop section.purple ul li ::-moz-placeholder {
+    .pop section.purple .form ul li ::-moz-placeholder {
       /* Firefox 19+ */
       color: #8a80a0; }
-    .pop section.purple ul li :-ms-input-placeholder {
+    .pop section.purple .form ul li :-ms-input-placeholder {
       /* IE 10+ */
       color: #8a80a0; }
-    .pop section.purple ul li :-moz-placeholder {
+    .pop section.purple .form ul li :-moz-placeholder {
       /* Firefox 18- */
       color: #8a80a0; }
+    .pop section.purple .success h1 {
+      color: #574FC2; }
     .pop section.purple .pdt {
       position: absolute;
       right: -120px;
@@ -1345,22 +1406,31 @@ section.lottery {
       height: auto; }
       .pop section .border {
         padding: 40px 20px; }
-      .pop section h1 {
+      .pop section .form h1 {
         font-size: 1rem; }
-      .pop section h2 {
+      .pop section .form h2 {
         font-size: 0.875rem; }
-        .pop section h2 b {
+        .pop section .form h2 b {
           font-size: 0.875rem; }
-      .pop section ul li span {
+      .pop section .form ul li span {
         font-size: 0.875rem; }
-      .pop section ul li input {
+      .pop section .form ul li input {
         width: 75%;
         height: 40px; }
-      .pop section ul li p {
+      .pop section .form ul li p {
         display: block;
         font-size: 0.6875rem;
         padding-left: calc(100% - 215px);
         text-align: left; }
+      .pop section .success h1 {
+        margin-top: 0px;
+        font-size: 1.375rem; }
+      .pop section .success h2 {
+        padding: 0 20px; }
+      .pop section .fail {
+        padding-top: 0; }
+        .pop section .fail h1 {
+          font-size: 1.25rem; }
       .pop section a.btn {
         width: 120px;
         height: 44px;
@@ -1368,21 +1438,23 @@ section.lottery {
         line-height: 42px;
         margin: 0;
         margin-top: 10px; }
-    .pop section.gold ul li ::-webkit-input-placeholder,
-    .pop section.purple ul li ::-webkit-input-placeholder {
+    .pop section.gold .form ul li ::-webkit-input-placeholder,
+    .pop section.purple .form ul li ::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       opacity: 0; }
     .pop section.gold .pdt,
     .pop section.purple .pdt {
       display: none; } }
   @media only screen and (max-device-width: 413px) and (orientation: portrait) {
-    .pop section h2 {
+    .pop section .form h2 {
       font-size: 0.875rem;
       letter-spacing: 0.5px; }
-    .pop section ul {
+    .pop section .form ul {
       margin-bottom: 5px; }
-      .pop section ul li p {
-        padding-left: calc(100% - 189px); } }
+      .pop section .form ul li p {
+        padding-left: calc(100% - 189px); }
+    .pop section .success h2 br {
+      display: none; } }
 
 .checkbox-custom,
 .checkbox-custom-label {

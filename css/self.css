@@ -1,0 +1,25 @@
+.wow{
+    visibility: hidden;
+}
+
+.float{
+    -webkit-animation: float 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    animation: float 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+@keyframes float{
+    0% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+    }
+    50% {
+        transform: translateY(25px);
+        -webkit-transform: translateY(25px);
+        -moz-transform: translateY(25px);
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+    }
+}

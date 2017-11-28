@@ -131,6 +131,14 @@ section.index {
 }
 
 
+
+
+
+
+
+
+
+
 /*==========================easy sport==========================*/
 
 section.easy {
@@ -293,6 +301,14 @@ section.easy {
 }
 
 
+
+
+
+
+
+
+
+
 /*==========================patent sport==========================*/
 
 section.patent {
@@ -379,8 +395,8 @@ section.patent {
             width: 100%;
             margin: 0 auto;
             padding-top: 30px;
-            .video{
-                iframe{
+            .video {
+                iframe {
                     opacity: 0;
                 }
             }
@@ -442,6 +458,14 @@ section.patent {
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
 /*==========================famous==========================*/
@@ -641,14 +665,22 @@ section.famous {
 
 .bg_2 {
     width: 100%;
-    background: url(../img/bg_2.jpg) no-repeat top center;
+    background: url(../img/bg_2.jpg) no-repeat top center #e4f0f8;
     padding-top: 200px;
     @media only screen and (max-device-width: 736px) and (orientation: portrait) {
-        background: url(../img/m_bg_2.jpg) no-repeat top center;
+        background: url(../img/m_bg_2.jpg) no-repeat top center #e4f0f8;
         background-size: 100%;
         padding-top: 150px;
     }
 }
+
+
+
+
+
+
+
+
 
 
 /*==========================pdt==========================*/
@@ -668,6 +700,7 @@ section.pdt_block {
         }
     }
     .c_1 {
+        display: block;
         p.triggle {
             @include img-scale;
             @include allcenter;
@@ -732,88 +765,135 @@ section.pdt_block {
             right: 0;
         }
     }
+    .m_pdtBlock {
+        display: none;
+    }
     @media only screen and (max-device-width: 736px) and (orientation: portrait) {
         margin-bottom: 70px;
         .cut_block {
-            height: 300px;
+            display: none;
         }
-        .c_1 {
+        .m_pdtBlock {
             display: block;
             font-size: 0;
             letter-spacing: 0;
             margin-top: 30px;
-            p.triggle {
-                margin-top: -50px;
-            }
-            p.gold,
-            p.purple {
-                @include img-scale;
-                left: 50%;
-                @include translateX(-50%);
-                a {
-                    display: block;
-                    @include font-style(13px, 300, 1.2, white, null);
-                    @include circle(70px);
-                    position: absolute;
-                    bottom: -10px;
-                    padding: 17px 20px;
-                    text-align: center;
-                    &:before,
-                    &:after {
-                        content: '';
+            position: relative;
+            .gold_block,
+            .purple_block {
+                p.pdt {
+                    @include img_scale;
+                }
+                p.pdt,
+                .tt_box {
+                    display: inline-block;
+                    vertical-align: top;
+                }
+                .tt_box {
+                    position: relative;
+                    p {
+                        width: 80%;
+                        @include img_scale;
+                    }
+                    a.btn {
                         display: block;
-                        @include box(7px, 2px, white);
-                        left: 50%;
-                        bottom: 5px;
-                        position: absolute;
+                        text-align: center;
+                        @include box(120px, 45px, null);
+                        @include font-style(15px, 400, 45px, white, null);
                     }
-                    &:before {
-                        margin-left: -3px;
-                        @include simple-transform($scale: false, $rotate: 30deg, $trans-x: -50%, $trans-y: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false);
+                }
+                .open{
+                    width: 80%;
+                    @include img-scale;
+                    margin: 20px auto 0;
+                }
+            }
+            .gold_block {
+                p.pdt {
+                    width: 50%;
+                    img {
+                        margin-left: -10px;
                     }
-                    &:after {
-                        bottom: 9px;
-                        margin-left: 3px;
-                        @include simple-transform($scale: false, $rotate: -30deg, $trans-x: -50%, $trans-y: false, $skew-x: false, $skew-y: false, $origin-x: false, $origin-y: false);
+                }
+                .tt_box {
+                    width: 50%;
+                    height: 220px;
+                    p {
+                        @include absl(5%, null, null, 50%);
+                        @include translateX(-50%);
+                        img {
+                            margin-left: -40px;
+                        }
+                    }
+                    a.gold {
+                        background: url(../img/btn_gold.png) no-repeat top center;
+                        background-size: 100%;
+                        @include absl(null, null, 0%, 4%);
                     }
                 }
             }
-            p.gold {
-                margin-left: -120px;
-                width: 60%;
-                a {
-                    background-color: #987227;
-                    left: 65px;
+            .purple_block {
+                p.pdt {
+                    width: 50%;
+                    img {
+                        margin-left: 0px;
+                        margin-top: 60px;
+                    }
                 }
-            }
-            p.purple {
-                margin-left: 100px;
-                width: 45%;
-                bottom: 18px;
-                a {
-                    background-color: #673ebd;
-                    right: 10px;
+                .tt_box {
+                    width: 50%;
+                    height: 220px;
+                    p {
+                        @include absl(5%, null, null, 50%);
+                        @include translateX(-50%);
+                        img {
+                            margin-left: -40px;
+                        }
+                    }
+                    a.purple {
+                        background: url(../img/btn_purple.png) no-repeat top center;
+                        background-size: 100%;
+                        @include absl(null, null, 0%, 4%);
+                    }
                 }
-            }
-            p.bubble_gold,
-            p.bubble_purple {
-                width: 25%;
-                @include img-scale;
-            }
-            p.bubble_gold {
-                top: -10%;
-                left: 30%;
-            }
-            p.bubble_purple {
-                top: 10%;
-                right: 15%;
             }
         }
-        .c_2 {
-            display: none;
+    }
+    @media only screen and (max-device-width: 413px) and (orientation: portrait) {
+        .m_pdtBlock .gold_block .tt_box {
+            height: 207px;
+        }
+        .m_pdtBlock .gold_block .tt_box a.gold,
+        .m_pdtBlock .purple_block .tt_box a.purple {
+            left: -1%;
+        }
+        .m_pdtBlock .purple_block .tt_box {
+            height: 205px;
+        }
+    }
+    @media only screen and (max-device-width: 374px) and (orientation: portrait) {
+        .m_pdtBlock .gold_block .tt_box {
+            height: 180px;
+        }
+        .m_pdtBlock .purple_block .tt_box {
+            height: 180px;
+        }
+        .m_pdtBlock .gold_block .tt_box a.btn,
+        .m_pdtBlock .purple_block .tt_box a.btn {
+            width: 100px;
+            height: 35px;
+            @include font-style(14px, null, 35px, null, null);
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
 /*==========================lottery==========================*/
@@ -821,6 +901,7 @@ section.pdt_block {
 section.lottery {
     text-align: center;
     padding-bottom: 150px;
+    margin-top: 30px;
     h1 {
         @include img-scale;
         width: 80%;
@@ -1057,17 +1138,26 @@ section.lottery {
         .choose_block .purple_box p.pdt {
             width: 35%;
         }
-        .choose_block .purple_box p.pdt{
+        .choose_block .purple_box p.pdt {
             bottom: 40px;
         }
-        .choose_block .gold_box, .choose_block .purple_box{
+        .choose_block .gold_box,
+        .choose_block .purple_box {
             height: 165px;
         }
-        .choose_block p.tt{
+        .choose_block p.tt {
             padding: 0;
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
 /*==========================POP==========================*/
@@ -1089,46 +1179,68 @@ section.lottery {
             @include box(100%, 100%, white);
             padding: 30px 20px;
         }
-        h1 {
-            @include font-style(25px, null, null, null, null);
-        }
-        h2 {
-            @include font-style(18px, 400, 1.8, null, null);
-            b {
-                @include font-style(18px, 400, null, null, null);
+        .form {
+            h1 {
+                @include font-style(25px, null, null, null, null);
             }
-        }
-        ul {
-            margin: 20px auto 20px;
-            li {
-                margin: 5px 0;
-                span,
-                input {
-                    vertical-align: middle;
+            h2 {
+                @include font-style(18px, 400, 1.8, null, null);
+                b {
+                    @include font-style(18px, 400, null, null, null);
                 }
-                span {
+            }
+            ul {
+                margin: 20px auto 20px;
+                li {
+                    margin: 5px 0;
+                    span,
+                    input {
+                        vertical-align: middle;
+                    }
+                    span {
+                        display: inline-block;
+                        margin-right: 20px;
+                        @include font-style(15px, 400, null, null, null);
+                    }
+                    input {
+                        width: 350px;
+                        height: 50px;
+                        border: none;
+                        text-align: center;
+                        outline: none;
+                        @include font-style(14px, 400, null, null, null);
+                    }
+                    p {
+                        display: none;
+                    }
+                }
+            }
+            >p {
+                input {
+                    border: 1px solid #333;
+                    @include box(30px, 30px, white);
                     display: inline-block;
-                    margin-right: 20px;
-                    @include font-style(15px, 400, null, null, null);
-                }
-                input {
-                    width: 350px;
-                    height: 50px;
-                    border: none;
-                    text-align: center;
-                    outline: none;
-                    @include font-style(14px, 400, null, null, null);
-                }
-                p {
-                    display: none;
                 }
             }
         }
-        >p {
-            input {
-                border: 1px solid #333;
-                @include box(30px, 30px, white);
-                display: inline-block;
+        .success {
+            h1 {
+                @include font-style(27px, 500, null, null, null);
+                margin-top: 100px;
+                margin-bottom: 10px;
+            }
+            h2 {
+                padding: 0 80px;
+                margin-bottom: 30px;
+            }
+        }
+        .fail {
+            padding-top: 100px;
+            h1 {
+                @include font-style(25px, 500, null, null, null);
+            }
+            h2 {
+                margin-bottom: 30px;
             }
         }
         a.btn {
@@ -1136,6 +1248,13 @@ section.lottery {
             margin: 20px 10px;
             @include box(160px, 57px, null);
             @include font-style(17px, 400, 57px, white, null);
+            svg {
+                fill: white;
+                margin-right: 10px;
+                @include scale(0.9);
+                vertical-align: middle;
+                margin-top: -3px;
+            }
         }
         a.reset {
             background: url(../img/btn_gray.png) no-repeat top center;
@@ -1152,32 +1271,39 @@ section.lottery {
     }
     section.gold {
         background-image: linear-gradient(135deg, #eee2c3 0%, #7d5210 50%, #f9f0d4 100%);
-        h2 {
-            b {
-                color: #ad8942
+        .form {
+            h2 {
+                b {
+                    color: #ad8942
+                }
+            }
+            ul {
+                li {
+                    input {
+                        background-color: #f5f3ec;
+                    }
+                     ::-webkit-input-placeholder {
+                        /* Chrome/Opera/Safari */
+                        color: #989588;
+                    }
+                     ::-moz-placeholder {
+                        /* Firefox 19+ */
+                        color: #989588;
+                    }
+                     :-ms-input-placeholder {
+                        /* IE 10+ */
+                        color: #989588;
+                    }
+                     :-moz-placeholder {
+                        /* Firefox 18- */
+                        color: #989588;
+                    }
+                }
             }
         }
-        ul {
-            li {
-                input {
-                    background-color: #f5f3ec;
-                }
-                 ::-webkit-input-placeholder {
-                    /* Chrome/Opera/Safari */
-                    color: #989588;
-                }
-                 ::-moz-placeholder {
-                    /* Firefox 19+ */
-                    color: #989588;
-                }
-                 :-ms-input-placeholder {
-                    /* IE 10+ */
-                    color: #989588;
-                }
-                 :-moz-placeholder {
-                    /* Firefox 18- */
-                    color: #989588;
-                }
+        .success {
+            h1 {
+                color: #A9895A;
             }
         }
         .pdt {
@@ -1186,32 +1312,40 @@ section.lottery {
     }
     section.purple {
         background-image: linear-gradient(135deg, #c1acea 0%, #2925b2 50%, #afa7e7 100%);
-        h2 {
-            b {
-                color: #6126bb;
+        .form {
+            h2 {
+                b {
+                    color: #6126bb;
+                }
+            }
+            ul {
+                li {
+                    input {
+                        background-color: #f4f2f8;
+                    }
+                     ::-webkit-input-placeholder {
+                        /* Chrome/Opera/Safari */
+                        color: #8a80a0;
+                    }
+                     ::-moz-placeholder {
+                        /* Firefox 19+ */
+                        color: #8a80a0;
+                    }
+                     :-ms-input-placeholder {
+                        /* IE 10+ */
+                        color: #8a80a0;
+                    }
+                     :-moz-placeholder {
+                        /* Firefox 18- */
+                        color: #8a80a0;
+                    }
+                }
             }
         }
-        ul {
-            li {
-                input {
-                    background-color: #f4f2f8;
-                }
-                 ::-webkit-input-placeholder {
-                    /* Chrome/Opera/Safari */
-                    color: #8a80a0;
-                }
-                 ::-moz-placeholder {
-                    /* Firefox 19+ */
-                    color: #8a80a0;
-                }
-                 :-ms-input-placeholder {
-                    /* IE 10+ */
-                    color: #8a80a0;
-                }
-                 :-moz-placeholder {
-                    /* Firefox 18- */
-                    color: #8a80a0;
-                }
+        .success {
+
+            h1 {
+                color: #574FC2;
             }
         }
         .pdt {
@@ -1225,32 +1359,49 @@ section.lottery {
             .border {
                 padding: 40px 20px;
             }
-            h1 {
-                @include font-style(16px, null, null, null, null);
-            }
-            h2 {
-                @include font-style(14px, null, null, null, null);
-                b {
-                    @include font-style(14px, null, null, null, null);
+            .form {
+                h1 {
+                    @include font-style(16px, null, null, null, null);
                 }
-            }
-            ul {
-                li {
-                    span,
-                    input {}
-                    span {
+                h2 {
+                    @include font-style(14px, null, null, null, null);
+                    b {
                         @include font-style(14px, null, null, null, null);
                     }
-                    input {
-                        width: 75%;
-                        height: 40px;
+                }
+                ul {
+                    li {
+                        span,
+                        input {}
+                        span {
+                            @include font-style(14px, null, null, null, null);
+                        }
+                        input {
+                            width: 75%;
+                            height: 40px;
+                        }
+                        p {
+                            display: block;
+                            @include font-style(11px, null, null, null, null);
+                            padding-left: calc(100% - 215px);
+                            text-align: left;
+                        }
                     }
-                    p {
-                        display: block;
-                        @include font-style(11px, null, null, null, null);
-                        padding-left: calc(100% - 215px);
-                        text-align: left;
-                    }
+                }
+            }
+            .success {
+                h1 {
+                    margin-top: 0px;
+                    @include font-style(22px, null, null, null, null);
+                }
+                h2 {
+                    padding: 0 20px;
+                }
+            }
+            .fail {
+                padding-top: 0;
+                h1 {
+                    @include font-style(20px, null, null, null, null);
                 }
             }
             a.btn {
@@ -1262,14 +1413,17 @@ section.lottery {
         }
         section.gold,
         section.purple {
-            ul {
-                li {
-                     ::-webkit-input-placeholder {
-                        /* Chrome/Opera/Safari */
-                        opacity: 0;
+            .form {
+                ul {
+                    li {
+                         ::-webkit-input-placeholder {
+                            /* Chrome/Opera/Safari */
+                            opacity: 0;
+                        }
                     }
                 }
             }
+
             .pdt {
                 display: none;
             }
@@ -1277,14 +1431,23 @@ section.lottery {
     }
     @media only screen and (max-device-width: 413px) and (orientation: portrait) {
         section {
-            h2 {
-                @include font-style(14px, null, null, null, 0.5px);
+            .form {
+                h2 {
+                    @include font-style(14px, null, null, null, 0.5px);
+                }
+                ul {
+                    margin-bottom: 5px;
+                    li {
+                        p {
+                            padding-left: calc(100% - 189px);
+                        }
+                    }
+                }
             }
-            ul {
-                margin-bottom: 5px;
-                li {
-                    p {
-                        padding-left: calc(100% - 189px);
+            .success {
+                h2 {
+                    br {
+                        display: none;
                     }
                 }
             }
@@ -1344,6 +1507,14 @@ section.lottery {
         @include absl(10px, null, null, 4px);
     }
 }
+
+
+
+
+
+
+
+
 
 
 /*==========================活動辦法==========================*/
