@@ -26,19 +26,27 @@ window.requestAnimFrame = (function(){
             if(isMobile.phone) this.switchCnt = 2;
         },
         mounted: function(){
-            this.initKV();
-            this.initEasy();
-            this.initPatent();
-            this.initProduct();
-            this.initForm();
+            var $this = this;
+            window.onload = function(){
+                $this.initKV();
+                $this.initEasy();
+                $this.initPatent();
+                $this.initProduct();
+                $this.initForm();
 
-            gapage('homepage');
+                gapage('homepage');
+            }
         },
         methods: {
             ctrlScroll: function(){
                 this.menuHeader = (window.scrollY > 0) ? true : false;
-                var gaV3 = document.querySelector('.famous').offsetTop - document.querySelector('.famous').offsetHeight;
-                if(this.gaV3 == true && window.scrollY > gaV3){
+                
+                var hdHeight = document.getElementsByTagName('header')[0].offsetHeight;
+                var hdObj = document.querySelector('.wrap');
+                hdObj.style = (this.menuHeader == true) ? 'margin-top: ' + hdHeight + 'px' : hdObj.style = '';
+                
+                var div3offest = document.querySelector('.famous').offsetTop - document.querySelector('.famous').offsetHeight;
+                if(this.gaV3 == true && window.scrollY > div3offest){
                     gapage('V3');
                     this.gaV3 = false;
                 }
@@ -66,27 +74,23 @@ window.requestAnimFrame = (function(){
                     var bubbleDelay = ['.1', '.3', '.2', '.5', '.1'];
                     var bubbleDuration = ['2', '1.75', '2.25', '2', '1.75'];
 
-                    var oneTween = TweenMax.from(bubble1, .5,{
-                        scale: 0,
+                    var oneTween = TweenMax.to(bubble1, .5,{
+                        scale: 1,
+                        delay: 1.25,
+                        paused: true
+                    });
+                    var twoTween = TweenMax.to(bubble2, .5,{
+                        scale: 1,
                         delay: 1.5,
                         paused: true,
                         onComplete: function(){
-                            TweenMax.set(bubble1, { clearProps:"all" });
-                        }
-                    });
-                    var twoTween = TweenMax.from(bubble2, .5,{
-                        scale: 0,
-                        delay: 1.75,
-                        paused: true,
-                        onComplete: function(){
-                            TweenMax.set(bubble2, { clearProps:"all" });
                             for (var i = 0; i < bubbleAll.length; i++) { 
-                                bubbleAll[i].style = 'animation: float '+bubbleDuration[i]+'s ease infinite; animation-delay: '+bubbleDelay[i]+'s'
+                                bubbleAll[i].style = 'transform: scale(1); animation: float '+bubbleDuration[i]+'s ease infinite; animation-delay: '+bubbleDelay[i]+'s'
                             }
                         }
                     });
                 }
-                
+
                 // kv進場
                 var wow = new WOW({
                     boxClass: 'index_kv',
@@ -107,19 +111,14 @@ window.requestAnimFrame = (function(){
                     opacity: 1,
                     y: 0,
                     delay: .5
-                }, .2, function(){
-                    TweenMax.set(word, { clearProps:"all" });
-                });
+                }, .2);
                 var step2 = TweenMax.staggerTo(bubble, .5, {
                     scale: 1
-                }, .2, function(){
-                    TweenMax.set(bubble, { clearProps:"all" });
-                });
+                }, .2);
                 wordTween.add(step1);
                 wordTween.add(step2);
 
-                TweenMax.set(word, { opacity: 0, y: -50 });
-                TweenMax.set(bubble, { scale: 0 });
+                TweenMax.set(word, { y: -50 });
 
                 // easy進場
                 var wow = new WOW({
