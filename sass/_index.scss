@@ -357,6 +357,7 @@ section.patent {
             filter: drop-shadow(15px 15px 20px rgba(107, 127, 142, 0.8));
             max-width: 336px;
             width: 100%;
+            height: auto;
             a {
                 display: block;
                 @include img-scale;
@@ -367,7 +368,6 @@ section.patent {
                     z-index: 2;
                 }
                 img {
-                    @include absl(0, null, null, 0);
                     @include img-scale;
                 }
                 &:hover {
@@ -483,7 +483,7 @@ section.famous {
         height: 114px;
     }
     &:before {
-        @include absl(-30px, null, null, 0px);
+        @include absl(37px, null, null, 0px);
     }
     &:after {
         @include absl(null, null, -100px, 0px);
@@ -494,6 +494,7 @@ section.famous {
         width: 80%;
         max-width: 494px;
         margin: 0 auto;
+        margin-top: 50px;
     }
     h2 {
         @include font-style(18px, null, null, null, null);

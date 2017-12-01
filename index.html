@@ -9,7 +9,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:title" content="肌膚的有氧教室｜Bio Essence" />
         <meta property="og:description" content="「全新碧歐斯 生物能量複合素」，加強肌膚自我修復更新的能力；生物成分極致活化，讓有效成分超導吸收。讓肌膚就像做了有氧運動一樣美麗。" />
-        <meta property="og:image" content="" />
+        <meta property="og:image" content="img/600x315.png" />
         <!-- favicon -->
         <link rel="icon" href="img/favicon.ico">
         <!-- css style -->
@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/animate.min.css">
         <link rel="stylesheet" href="css/self.css">
+        <link rel="stylesheet" href="css/wa-mediabox.min.css">
         <!--[if gt IE 9]><script src="js/vendor/html5shiv.js"></script><![endif]-->
         <script src="js/vendor/ga.js"></script>
         <script src="js/vendor/isMobile.min.js"></script>
@@ -24,6 +25,7 @@
         <script src="js/vendor/vue.min.js"></script>
         <script src="js/vendor/wow.min.js"></script>
         <script src="js/vendor/TweenMax.min.js"></script>
+        <script src="js/vendor/wa-mediabox.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
     </head>
     <body>
@@ -44,11 +46,11 @@
             </div>
             <!--==============選單==============-->
             <header :class="{ 'fixed' : menuHeader }">
-                <div class="logo"><img src="img/logo.png" alt="" @click="scrollToY(0, 500);"></div>
+                <div class="logo"><img src="img/logo.png" alt="" @click="scrollToY(0, 500); gaclick('home');"></div>
                 <nav class="pc_mu">
                     <ul>
-                        <li @click="introPdt();"><a href="" @click.prevent.self>產品介紹</a></li>
-                        <li @click="actFG = true"><a href="" @click.prevent.self>活動辦法</a></li>
+                        <li @click="moveToPdt();"><a href="" @click.prevent.self>產品介紹</a></li>
+                        <li @click="disAct($event);"><a href="" @click.prevent.self>活動辦法</a></li>
                         <li class="fb">
                             <a href="https://www.facebook.com/Bioessence.tw/?fref=ts" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
@@ -69,8 +71,8 @@
                         <div class="menu">
                             <div class="con">
                                 <ul>
-                                    <li @click="introPdt();"><a href="" @click.prevent.self>產品介紹</a></li>
-                                    <li @click="actFG = true"><a href="" @click.prevent.self>活動辦法</a></li>
+                                    <li @click="moveToPdt();"><a href="" @click.prevent.self>產品介紹</a></li>
+                                    <li @click="disAct($event);"><a href="" @click.prevent.self>活動辦法</a></li>
                                     <li><a href="https://www.facebook.com/Bioessence.tw/?fref=ts" target="_blank">粉絲團</a></li>
                                 </ul>
                             </div>
@@ -84,15 +86,15 @@
                 <!--主視覺-->
                 <section class="index">
                     <h1>
-                        <p><img class="index_kv zoomIn" data-wow-duration=".5s" src="img/big_title_triangle.png" alt=""></p>
-                        <p><img class="index_kv zoomIn" data-wow-duration=".4s" data-wow-delay=".3s" src="img/big_title.png" alt=""></p>
+                        <p><img class="index_kv zoomIn" data-wow-duration=".5s" data-wow-delay=".5s" src="img/big_title_triangle.png" alt=""></p>
+                        <p><img class="index_kv zoomIn" data-wow-duration=".4s" data-wow-delay=".8s" src="img/big_title.png" alt=""></p>
                     </h1>
                     <div class="bubble_block">
-                        <p class="b_1 one"><img src="img/bubble.png" alt=""></p>
-                        <p class="b_2 two"><img src="img/bubble.png" alt=""></p>
-                        <p class="b_3 one"><img src="img/bubble.png" alt=""></p>
-                        <p class="b_4 two"><img src="img/bubble.png" alt=""></p>
-                        <p class="b_5 one"><img src="img/bubble.png" alt=""></p>
+                        <p class="b_1"><img class="one" src="img/bubble.png" alt=""></p>
+                        <p class="b_2"><img class="two" src="img/bubble.png" alt=""></p>
+                        <p class="b_3"><img class="one" src="img/bubble.png" alt=""></p>
+                        <p class="b_4"><img class="two" src="img/bubble.png" alt=""></p>
+                        <p class="b_5"><img class="one" src="img/bubble.png" alt=""></p>
                     </div>
                 </section>
                 <!--==============最輕鬆的有氧運動==============-->
@@ -134,8 +136,7 @@
                             <h2><img src="img/patent_topic_1.png" alt=""></h2>
                             <h3>透過「全新碧歐斯 生物能量複合素」，<br>加強肌膚自我修復更新的能力；<br>生物成分極致活化，讓有效成分超導吸收。<p><img src="img/patent_highlight_word.png" alt=""></p>現在你知道，女神的秘密武器是什麼了吧<br></h3>
                             <div class="video">
-                                <a href=""><span class="icon-play"></span><img src="img/video.png" alt=""></a>
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/URAH5PgkKgs?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" gesture="media" allowfullscreen></iframe>
+                                <a href="https://www.youtube.com/embed/URAH5PgkKgs?rel=0&autoplay=1&amp;controls=0&amp;showinfo=0" data-iframe="true" data-mediabox="bio-youtube" data-width="1024" data-height="576"><span class="icon-play"></span><img src="img/video.png" alt="" @click="gaclick('TVC');"></a>
                             </div>
                         </div>
                         <div class="pdt"><img class="patent_kv_pc fadeInRight" data-wow-duration=".5s" data-wow-delay=".1s" src="img/patent_pdt.png" alt=""></div>
@@ -151,21 +152,21 @@
                             <div class="hidden">
                                 <ul>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
-                                        <a href="">
+                                        <a href="" @click="gaclick('kevin');">
                                             <p class="photo"><img src="img/commend_pic_01.png" alt=""></p>
                                             <div class="tt"><span>「凱文瘋了」</span>
                                                 <p class="name">美容教父也動起來</p><b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
-                                        <a href="">
+                                        <a href="" @click="gaclick('elle');">
                                             <p class="photo"><img src="img/commend_pic_02.png" alt=""></p>
                                             <div class="tt"><span>Elle 資深總編輯</span>
                                                 <p class="name">盧淑芬</p><b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
-                                        <a href="">
+                                        <a href="" @click="gaclick('blogger');">
                                             <p class="photo"><img src="img/commend_pic_03.png" alt=""></p>
                                             <div class="tt"><span>人氣部落客</span>
                                                 <p class="name">Michelle</p><b></b></div>
@@ -269,14 +270,14 @@
                                         <h4>
                                             <span>抗</span>初老
                                         </h4>
-                                        <a href="" @click="goldFG = true" @click.prevent.self>我要透亮年輕</a>
+                                        <a href="" @click="goldFG = true; gaclick('biogold');" @click.prevent.self>我要透亮年輕</a>
                                     </div>
                                     <div class="purple_box">
                                         <p class="pdt"><img src="img/sign_pdt_purple.png" alt=""></p>
                                         <h4>
                                             <span>超</span>彈潤
                                         </h4>
-                                        <a href="" @click="purpleFG = true" @click.prevent.self>我要肌膚Q彈</a>
+                                        <a href="" @click="purpleFG = true; gaclick('biobounce');" @click.prevent.self>我要肌膚Q彈</a>
                                     </div>
                                     <p class="tt">兩堂肌膚有氧運動你想體驗哪一道呢？</p>
                                 </div>
@@ -292,52 +293,47 @@
                         <a href="" class="close" @click="goldFG = false" @click.prevent.self></a>
                         <div class="border">
                             <!--填表單-->
-                            <transition name="fade">
-                                <div class="form" v-if="goldStep == 1">
-                                    <h1>加入肌膚的有氧教室</h1>
-                                    <h2>就有機會獲得<b>Bio金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
-                                    <ul>
-                                        <li><span>姓名</span>
-                                            <input type="text" v-model="goldData.name">
-                                        </li>
-                                        <li><span>手機</span>
-                                            <input type="tel" placeholder="同一組手機號碼僅限參加一次" v-model="goldData.phone">
-                                            <p>*同一組手機號碼僅限參加一次</p>
-                                        </li>
-                                        <li><span>地址</span>
-                                            <input type="text" placeholder="中獎後依填寫地址寄送，請確實填寫" v-model="goldData.address">
-                                            <p>*中獎後依填寫地址寄送，請確實填寫</p>
-                                        </li>
-                                    </ul>
-                                    <p>
-                                        <input type="checkbox" class="checkbox-custom" name="checkbox" id="checkbox" />
-                                        <label for="checkbox" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;">約定事項</a> 並且同意遵守所有規定。</label>
-                                    </p>
-                                    <a href="" class="btn reset" @click="goldData.name = goldData.phone = goldData.address = ''" @click.prevent.self>重新填寫</a>
-                                    <a href="" class="btn send_gold" @click="sendData($event, 'gold');">確認送出</a>
-                                </div>
-                            </transition>
+                            <div class="form" v-show="goldStep == 1">
+                                <h1>加入肌膚的有氧教室</h1>
+                                <h2>就有機會獲得<b>Bio金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
+                                <ul>
+                                    <li><span>姓名</span>
+                                        <input type="text" v-model="goldData.name">
+                                    </li>
+                                    <li><span>手機</span>
+                                        <input type="tel" placeholder="同一組手機號碼僅限參加一次" v-model="goldData.phone">
+                                        <p>*同一組手機號碼僅限參加一次</p>
+                                    </li>
+                                    <li><span>地址</span>
+                                        <input type="text" placeholder="中獎後依填寫地址寄送，請確實填寫" v-model="goldData.address">
+                                        <p>*中獎後依填寫地址寄送，請確實填寫</p>
+                                    </li>
+                                </ul>
+                                <p>
+                                    <input type="checkbox" class="checkbox-custom" name="checkbox" id="checkbox" />
+                                    <label for="checkbox" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;">約定事項</a> 並且同意遵守所有規定。</label>
+                                </p>
+                                <a href="" class="btn reset" @click="goldData.name = goldData.phone = goldData.address = ''" @click.prevent.self>重新填寫</a>
+                                <a href="" class="btn send_gold" @click="sendData($event, 'gold');">確認送出</a>
+                            </div>
                             <!--完成-->
-                            <transition name="fade">
-                                <div class="success" v-if="goldStep == 2">
-                                    <h1>成功送出資料！</h1>
-                                    <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享給好友，中獎機率更大喔！</h2>
-                                    <a href="" class="btn send_gold">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
-                                            <g>
-                                                <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
-                                            </g>
-                                        </svg>分享</a>
-                                </div>
-                            </transition>
+                            <div class="success" v-show="goldStep == 2">
+                                <h1>成功送出資料！</h1>
+                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享給好友，中獎機率更大喔！</h2>
+                                <a href="" class="btn send_gold" @click="sendShare($event);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
+                                        <g>
+                                            <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
+                                        </g>
+                                    </svg>分享
+                                </a>
+                            </div>
                             <!--已填寫過-->
-                            <transition name="fade">
-                                <div class="fail" v-if="goldStep == 3">
-                                    <h1>你已參與過抽獎囉！</h1>
-                                    <h2>(同組手機號碼僅限參加一次)</h2>
-                                    <a href="" class="btn reset">返回</a>
-                                </div>
-                            </transition>
+                            <div class="fail" v-show="goldStep == 3">
+                                <h1>你已參與過抽獎囉！</h1>
+                                <h2>(同組手機號碼僅限參加一次)</h2>
+                                <a href="" class="btn reset" @click="goldData.name = goldData.phone = goldData.address = ''; goldStep = 1;" @click.prevent.self>返回</a>
+                            </div>
                         </div>
                         <div class="pdt"><img src="img/pop_pdt_gold.png" alt=""></div>
                     </section>
@@ -350,52 +346,47 @@
                         <a href="" class="close" @click="purpleFG = false" @click.prevent.self></a>
                         <div class="border">
                             <!--填表單-->
-                            <transition name="fade" mode="out-in">
-                                <div class="form" v-if="purpleStep == 1">
-                                    <h1>加入肌膚的有氧教室</h1>
-                                    <h2>就有機會獲得<b>Bio金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
-                                    <ul>
-                                        <li><span>姓名</span>
-                                            <input type="text" v-model="purpleData.name">
-                                        </li>
-                                        <li><span>手機</span>
-                                            <input type="tel" placeholder="同一組手機號碼僅限參加一次" v-model="purpleData.phone">
-                                            <p>*同一組手機號碼僅限參加一次</p>
-                                        </li>
-                                        <li><span>地址</span>
-                                            <input type="text" placeholder="中獎後依填寫地址寄送，請確實填寫" v-model="purpleData.address">
-                                            <p>*中獎後依填寫地址寄送，請確實填寫</p>
-                                        </li>
-                                    </ul>
-                                    <p>
-                                        <input type="checkbox" class="checkbox-custom" name="checkbox" id="checkbox_2" />
-                                        <label for="checkbox_2" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;">約定事項</a> 並且同意遵守所有規定。</label>
-                                    </p>
-                                    <a href="" class="btn reset" @click="purpleData.name = purpleData.phone = purpleData.address = ''" @click.prevent.self>重新填寫</a>
-                                    <a href="" class="btn send_purple" @click="sendData($event, 'purple');">確認送出</a>
-                                </div>
-                            </transition>
+                            <div class="form" v-show="purpleStep == 1">
+                                <h1>加入肌膚的有氧教室</h1>
+                                <h2>就有機會獲得<b>Bio金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
+                                <ul>
+                                    <li><span>姓名</span>
+                                        <input type="text" v-model="purpleData.name">
+                                    </li>
+                                    <li><span>手機</span>
+                                        <input type="tel" placeholder="同一組手機號碼僅限參加一次" v-model="purpleData.phone">
+                                        <p>*同一組手機號碼僅限參加一次</p>
+                                    </li>
+                                    <li><span>地址</span>
+                                        <input type="text" placeholder="中獎後依填寫地址寄送，請確實填寫" v-model="purpleData.address">
+                                        <p>*中獎後依填寫地址寄送，請確實填寫</p>
+                                    </li>
+                                </ul>
+                                <p>
+                                    <input type="checkbox" class="checkbox-custom" name="checkbox" id="checkbox_2" />
+                                    <label for="checkbox_2" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;">約定事項</a> 並且同意遵守所有規定。</label>
+                                </p>
+                                <a href="" class="btn reset" @click="purpleData.name = purpleData.phone = purpleData.address = ''" @click.prevent.self>重新填寫</a>
+                                <a href="" class="btn send_purple" @click="sendData($event, 'purple');">確認送出</a>
+                            </div>
                             <!--完成-->
-                            <transition name="fade" mode="out-in">
-                                <div class="success" v-if="purpleStep == 2">
-                                    <h1>成功送出資料！</h1>
-                                    <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享給好友，中獎機率更大喔！</h2>
-                                    <a href="" class="btn send_purple">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
-                                            <g>
-                                                <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
-                                            </g>
-                                        </svg>分享</a>
-                                </div>
-                            </transition>
+                            <div class="success" v-show="purpleStep == 2">
+                                <h1>成功送出資料！</h1>
+                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享給好友，中獎機率更大喔！</h2>
+                                <a href="" class="btn send_purple" @click="sendShare($event);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
+                                        <g>
+                                            <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
+                                        </g>
+                                    </svg>分享
+                                </a>
+                            </div>
                             <!--已填寫過-->
-                            <transition name="fade" mode="out-in">
-                                <div class="fail" v-if="purpleStep == 3">
-                                    <h1>你已參與過抽獎囉！</h1>
-                                    <h2>(同組手機號碼僅限參加一次)</h2>
-                                    <a href="" class="btn reset">返回</a>
-                                </div>
-                            </transition>
+                            <div class="fail" v-show="purpleStep == 3">
+                                <h1>你已參與過抽獎囉！</h1>
+                                <h2>(同組手機號碼僅限參加一次)</h2>
+                                <a href="" class="btn reset" @click="purpleData.name = purpleData.phone = purpleData.address = ''; purpleStep = 1;" @click.prevent.self>返回</a>
+                            </div>
                         </div>
                         <div class="pdt"><img src="img/pop_pdt_purple.png" alt=""></div>
                     </section>

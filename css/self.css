@@ -9,7 +9,7 @@
     opacity: 0;
 }
 
-.wow{
+.wow, .index_kv, .easy_kv, .patent_kv_m, .patent_kv_pc, .product_kv, .form_kv{
     visibility: hidden;
 }
 

@@ -5,10 +5,7 @@
         m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', '', 'auto');
-
-var finder = '/baby2017';
-// var finder = '';
+ga('create', 'UA-110489819-1', 'auto');
 
 function gapage(page) {
     ga('send', 'pageview', page);
@@ -21,10 +18,4 @@ function trackWaitJump(event, url) {
         location.href = url;
     }, 100);
     gaclick(event);
-}
-function routeJump(event, name) {
-    setTimeout(function () {
-        location.pathname = finder + '/' + name;
-    }, 100);
-    if(event) gaclick(event);
 }

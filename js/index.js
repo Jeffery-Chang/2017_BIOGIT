@@ -11,24 +11,13 @@ window.requestAnimFrame = (function(){
         el: '#indexPage',
         data: {
             menuHeader: false,
-            goldFG: false,
-            goldStep: 1,
-            purpleFG: false,
-            purpleStep: 1,
+            goldFG: false, goldStep: 1,
+            purpleFG: false, purpleStep: 1,
             switchCnt: 0,
             actFG: false,
-            goldData:{
-                name: '',
-                phone: '',
-                address: '',
-                gift: 'A'
-            },
-            purpleData:{
-                name: '',
-                phone: '',
-                address: '',
-                gift: 'B'
-            }
+            gaV3: true, gaV5: true, gaV6: true,
+            goldData:{ name: '', phone: '', address: '', gift: 'A' },
+            purpleData:{ name: '', phone: '', address: '', gift: 'B' }
         },
         created: function () {
             window.addEventListener('scroll', this.ctrlScroll);
@@ -42,10 +31,17 @@ window.requestAnimFrame = (function(){
             this.initPatent();
             this.initProduct();
             this.initForm();
+
+            gapage('homepage');
         },
         methods: {
             ctrlScroll: function(){
                 this.menuHeader = (window.scrollY > 0) ? true : false;
+                var gaV3 = document.querySelector('.famous').offsetTop - document.querySelector('.famous').offsetHeight;
+                if(this.gaV3 == true && window.scrollY > gaV3){
+                    gapage('V3');
+                    this.gaV3 = false;
+                }
             },
             setOverFlow: function(){
                 if(this.goldFG == true || this.purpleFG == true || this.actFG == true){
@@ -54,22 +50,14 @@ window.requestAnimFrame = (function(){
                     document.body.style.cssText = '';
                 }
             },
-            introPdt: function(){
+            moveToPdt: function(){
                 var pos = document.querySelector('.bg_2').offsetTop;
                 this.scrollToY(pos, 500);
                 if(isMobile.phone) document.querySelector('.menuToggle input').click();
+
+                gaclick('product');
             },
             initKV: function(){
-                // kv進場
-                var wow = new WOW({
-                    boxClass: 'index_kv',
-                    offset: 0,
-                    delay: 2,
-                    callback: function(box) {
-
-                    }
-                }).init();
-
                 // mobile不做泡泡進場
                 if(!isMobile.phone){
                     var bubble1 = document.querySelectorAll('.one');
@@ -77,16 +65,19 @@ window.requestAnimFrame = (function(){
                     var bubbleAll = document.querySelectorAll('.one, .two');
                     var bubbleDelay = ['.1', '.3', '.2', '.5', '.1'];
                     var bubbleDuration = ['2', '1.75', '2.25', '2', '1.75'];
-                    TweenMax.from(bubble1, .5,{
+
+                    var oneTween = TweenMax.from(bubble1, .5,{
                         scale: 0,
-                        delay: 1,
+                        delay: 1.5,
+                        paused: true,
                         onComplete: function(){
                             TweenMax.set(bubble1, { clearProps:"all" });
                         }
                     });
-                    TweenMax.from(bubble2, .5,{
+                    var twoTween = TweenMax.from(bubble2, .5,{
                         scale: 0,
-                        delay: 1.25,
+                        delay: 1.75,
+                        paused: true,
                         onComplete: function(){
                             TweenMax.set(bubble2, { clearProps:"all" });
                             for (var i = 0; i < bubbleAll.length; i++) { 
@@ -95,6 +86,15 @@ window.requestAnimFrame = (function(){
                         }
                     });
                 }
+                
+                // kv進場
+                var wow = new WOW({
+                    boxClass: 'index_kv',
+                    callback: function(box) {
+                        if(!isMobile.phone) oneTween.play();
+                        if(!isMobile.phone) twoTween.play();
+                    }
+                }).init();
             },
             initEasy: function(){
                 var word = document.querySelectorAll('.easy h1 p img, .easy h1 span, .easy h2 img');
@@ -127,19 +127,25 @@ window.requestAnimFrame = (function(){
                     offset: 200,
                     callback: function(box) {
                         wordTween.play();
+                        gapage('V1');
                     }
                 }).init();
             },
             initPatent: function(){
                 var word = document.querySelectorAll('.text_block h1, .text_block h2, .text_block h3, .text_block .video');
                 var boxName = (isMobile.phone) ? 'patent_kv_m' : 'patent_kv_pc';
+                var video = document.querySelector('.text_block .video');
+
                 TweenMax.set(word, { opacity: 0, y: -50 });
+                WAMediaBox.bindAll(video);
+
                 // patent進場
                 var wow = new WOW({
                     boxClass: boxName,
                     offset: 200,
                     delay: .5,
                     callback: function(box) {
+                        gapage('V2');
                         TweenMax.staggerTo(word, .5, {
                             opacity: 1,
                             y: 0
@@ -209,6 +215,7 @@ window.requestAnimFrame = (function(){
                         offset: 300,
                         delay: .1,
                         callback: function(box) {
+                            gapage('V4');
                             pdtTween.play();
                         }
                     }).init();
@@ -231,7 +238,10 @@ window.requestAnimFrame = (function(){
                     var wow = new WOW({
                         boxClass: 'product_kv',
                         offset: 300,
-                        delay: .1
+                        delay: .1,
+                        callback: function(box) {
+                            gapage('V4');
+                        }
                     }).init();
                     var wow = new WOW({
                         boxClass: 'product_kv_g',
@@ -246,6 +256,7 @@ window.requestAnimFrame = (function(){
                 }
             },
             initForm: function(){
+                var $this = this;
                 var h1 = document.querySelector('.lottery h1 img');
                 var h2 = document.querySelector('.lottery h2');
                 var h3 = document.querySelector('.lottery h3');
@@ -282,18 +293,39 @@ window.requestAnimFrame = (function(){
                     offset: 300,
                     delay: .1,
                     callback: function(box) {
-                        formTween.play();
+                        if($this.gaV5 == true){
+                            gapage('V5');
+                            $this.gaV5 = false;
+                            formTween.play();
+                        }
                     }
                 }).init();
+            },
+            disAct: function(evt){
+                evt.preventDefault();
+                this.actFG = true;
+                this.$nextTick(function(){
+                    if(this.gaV6 == true){
+                        gapage('V6');
+                        this.gaV6 = false;
+                    }
+                });
+                gaclick('rule');
             },
             disImg: function(evt, type){
                 evt.preventDefault();
                 var ctrlBox = (type === 'gold') ? document.querySelectorAll('.pdt_block .m_pdtBlock .open')[0] : document.querySelectorAll('.pdt_block .m_pdtBlock .open')[1];
                 var refHeight = (type === 'gold') ? document.querySelectorAll('.pdt_block .m_pdtBlock .open img')[0].offsetHeight : document.querySelectorAll('.pdt_block .m_pdtBlock .open img')[1].offsetHeight;
-                
+
                 TweenMax.to(ctrlBox, .5,{
                     height: (ctrlBox.offsetHeight === 0) ? refHeight : 0 + 'px'
                 });
+
+                (type === 'gold') ? gaclick('gold') :  gaclick('bounce');
+            },
+            sendShare: function(evt){
+                evt.preventDefault();
+                this.shareFB(location.href, '?back=1');
             },
             sendData: function(evt, type){
                 if(evt) evt.preventDefault();
@@ -322,26 +354,40 @@ window.requestAnimFrame = (function(){
                     return;
                 }
 
-                console.log('send');
-
-                if(type === 'gold'){
-                    this.goldStep = 2;
-                }else if(type === 'purple'){
-                    this.purpleStep = 2;
-                }
-
-                /*axios({
+                axios({
                     method: 'post',
                     url: 'api/Send_User',
                     data: senddata
                 }).then((response) => {
                     console.log(response);
-                    if(type === 'gold'){
-                        this.goldStep = 2;
-                    }else if(type === 'purple'){
-                        this.purpleStep = 2;
+
+                    if(response.data.status === '200'){
+                        if(type === 'gold'){
+                            this.goldStep = 2;
+                            gaclick('biogoldenter');
+                        }else if(type === 'purple'){
+                            this.purpleStep = 2;
+                            gaclick('biobounceenter');
+                        }
+                    }else if(response.data.status === '110'){
+                        if(type === 'gold'){
+                            this.goldStep = 3;
+                            gaclick('biogoldenter');
+                        }else if(type === 'purple'){
+                            this.purpleStep = 3;
+                            gaclick('biobounceenter');
+                        }
+                    }else{
+                        alert('資料傳送錯誤，請重新再試！');
                     }
-                });*/
+                });
+            },
+            shareFB: function(url, track){
+                var fb_url = (isMobile.phone) ? 'http://m.facebook.com/sharer.php?u=' : 'http://www.facebook.com/sharer.php?u=';
+                var fbBack_url = (track) ? track : '';
+                var share_u;
+                share_u = url + fbBack_url;
+                window.open(fb_url + encodeURIComponent(share_u), 'sharer', 'toolbar=0,status=0,width=656,height=436');
             },
             scrollToY: function(scrollTargetY, speed, easing){
                 var scrollY = window.scrollY || document.documentElement.scrollTop,

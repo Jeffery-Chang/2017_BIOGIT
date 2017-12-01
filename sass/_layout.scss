@@ -122,4 +122,7 @@ header.fixed{
     left: 0;
     z-index: 100;
     @include box(100%, 80px, white);
+    @media only screen and (max-device-width: 736px) and (orientation: portrait) {
+        height: 55px;
+    }
 }
