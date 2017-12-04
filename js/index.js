@@ -39,14 +39,17 @@ window.requestAnimFrame = (function(){
         },
         methods: {
             ctrlScroll: function(){
-                this.menuHeader = (window.scrollY > 0) ? true : false;
-                
+                var winTop = window.scrollY || document.documentElement.scrollTop;
+                this.menuHeader = (winTop > document.querySelector('.index').offsetHeight - 100) ? true : false;
+                (this.menuHeader) ? document.querySelector('header').classList.add('show') : document.querySelector('header').classList.remove('show');
+
                 var hdHeight = document.getElementsByTagName('header')[0].offsetHeight;
                 var hdObj = document.querySelector('.wrap');
-                hdObj.style = (this.menuHeader == true) ? 'margin-top: ' + hdHeight + 'px' : hdObj.style = '';
-                
+                var hdMargin = (isMobile.phone) ? '40px' : '80px';
+                hdObj.style.marginTop = (this.menuHeader == true) ? hdMargin : '';
+
                 var div3offest = document.querySelector('.famous').offsetTop - document.querySelector('.famous').offsetHeight;
-                if(this.gaV3 == true && window.scrollY > div3offest){
+                if(this.gaV3 == true && winTop > div3offest){
                     gapage('V3');
                     this.gaV3 = false;
                 }
@@ -69,19 +72,27 @@ window.requestAnimFrame = (function(){
                     var bubbleAll = document.querySelectorAll('.one, .two');
                     var bubbleDelay = ['.1', '.3', '.2', '.5', '.1'];
                     var bubbleDuration = ['2', '1.75', '2.25', '2', '1.75'];
+                    /*var bubbleDelay = ['.1', '.75'];
+                    var bubbleDuration = ['2.25', '1.75'];
+                    var bubbleClass = ['floatDown', 'floatUp'];*/
 
                     var oneTween = TweenMax.to(bubble1, .5,{
+                        opacity: 1,
                         scale: 1,
                         delay: 1.25,
                         paused: true
                     });
                     var twoTween = TweenMax.to(bubble2, .5,{
+                        opacity: 1,
                         scale: 1,
                         delay: 1.5,
                         paused: true,
                         onComplete: function(){
-                            for (var i = 0; i < bubbleAll.length; i++) { 
-                                bubbleAll[i].style = 'transform: scale(1); animation: float '+bubbleDuration[i]+'s ease infinite; animation-delay: '+bubbleDelay[i]+'s'
+                            for (var i = 0; i < bubbleAll.length; i++) {
+                                bubbleAll[i].style.opacity = '1';
+                                bubbleAll[i].style.transform = 'scale(1)';
+                                bubbleAll[i].style.animation = 'floatDown '+bubbleDuration[i]+'s ease infinite';
+                                bubbleAll[i].style.animationDelay = bubbleDelay[i]+'s';
                             }
                         }
                     });
@@ -161,8 +172,10 @@ window.requestAnimFrame = (function(){
                     var pdtIcon = document.querySelector('.pdt_block .triggle img');
                     var gold = document.querySelector('.pdt_block .gold img');
                     var goldBubble = document.querySelector('.pdt_block .bubble_gold img');
+                    var goldBoard = document.querySelectorAll('.cut_block.c_2 .board_gold');
                     var purple = document.querySelector('.pdt_block .purple img');
                     var purpleBubble = document.querySelector('.pdt_block .bubble_purple img');
+                    var purpleBoard = document.querySelectorAll('.cut_block.c_2 .board_purple');
                     var pdtTween = new TimelineMax({ paused: true, delay: .5 });
                     var step1 = TweenMax.to(pdtIcon, .75,{
                         scale: 1,
@@ -191,15 +204,20 @@ window.requestAnimFrame = (function(){
                     var step5 = TweenMax.to(section2, .75,{
                         opacity: 1
                     });
+                    var step6 = TweenMax.to([goldBoard, purpleBoard], .75,{
+                        opacity: 1,
+                        x: 0
+                    });
                     pdtTween.add(step1);
                     pdtTween.add(step2);
                     pdtTween.add(step3);
                     pdtTween.add(step4);
                     pdtTween.add(step5);
+                    pdtTween.add(step6);
 
                     TweenMax.set(pdtIcon, { scale: 0 });
-                    TweenMax.set(gold, { opacity: 0, x: -50 });
-                    TweenMax.set(purple, { opacity: 0, x: 50 });
+                    TweenMax.set([gold, purpleBoard], { opacity: 0, x: -50 });
+                    TweenMax.set([purple, goldBoard], { opacity: 0, x: 50 });
                     TweenMax.set(goldBubble, { opacity: 0, x: 75, y: 75, scale: .5 });
                     TweenMax.set(purpleBubble, { opacity: 0, x: -100, y: -100, scale: .5 });
                     TweenMax.set(section2, { opacity: 0 });
@@ -274,13 +292,13 @@ window.requestAnimFrame = (function(){
                 TweenMax.set(pbox, { x: 50 });
                 h1.classList.add('form_kv');
                 h1.classList.add('fadeInDown');
-                h1.setAttribute('data-wow-duration', '.5s');
+                h1.setAttribute('data-wow-duration', '1s');
                 h2.classList.add('form_kv');
                 h2.classList.add('fadeInDown');
-                h2.setAttribute('data-wow-duration', '.5s');
+                h2.setAttribute('data-wow-duration', '1s');
                 h3.classList.add('form_kv');
                 h3.classList.add('fadeInDown');
-                h3.setAttribute('data-wow-duration', '.5s');
+                h3.setAttribute('data-wow-duration', '1s');
 
                 // form進場
                 var wow = new WOW({

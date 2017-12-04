@@ -197,7 +197,7 @@ section.index {
     height: auto;
     position: absolute;
     top: 4%;
-    left: 27%; }
+    left: 25%; }
     section.index h1 p:nth-of-type(1) > img {
       width: 100%;
       height: auto;
@@ -241,7 +241,7 @@ section.index {
   section.index .bubble_block p.b_4 {
     width: 237px;
     top: 15%;
-    left: 10%;
+    left: 0%;
     filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="2" /></filter></svg>#filter');
     -webkit-filter: blur(2px);
             filter: blur(2px); }
@@ -253,12 +253,12 @@ section.index {
     section.index h1 {
       position: absolute;
       top: 4%;
-      left: 22%; } }
+      left: 20%; } }
   @media only screen and (max-width: 1366px) {
     section.index h1 {
       position: absolute;
       top: 4%;
-      left: 16%; }
+      left: 14%; }
     section.index .bubble_block p.b_2 {
       right: 10%; }
     section.index .bubble_block p.b_4 {
@@ -1729,7 +1729,10 @@ a.close {
       -webkit-transform: scale(0.5, 0.5);
       transform: scale(0.5, 0.5);
       top: -6px;
-      right: -6px; } }
+      right: -6px; }
+      a.close:hover {
+        -webkit-transform: scale(0.5, 0.5);
+        transform: scale(0.5, 0.5); } }
 
 .menuToggle {
   width: 60px;
@@ -1744,8 +1747,7 @@ a.close {
    -ms-user-select: none;
        user-select: none;
   text-align: center;
-  padding: 20px 15px 0 0;
-  position: fixed; }
+  padding: 20px 15px 0 0; }
 
 .menuToggle input {
   width: 60px;
