@@ -52,11 +52,7 @@ window.requestAnimFrame = (function(){
                 }
             },
             setOverFlow: function(){
-                if(this.goldFG == true || this.purpleFG == true || this.actFG == true){
-                    document.body.style.cssText = 'overflow-y: hidden';
-                }else{
-                    document.body.style.cssText = '';
-                }
+                document.body.style.cssText = (this.goldFG == true || this.purpleFG == true || this.actFG == true) ? 'overflow-y: hidden' : '';
             },
             moveToPdt: function(){
                 var pos = document.querySelector('.bg_2').offsetTop;
