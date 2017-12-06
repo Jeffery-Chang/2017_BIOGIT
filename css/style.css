@@ -710,6 +710,10 @@ section.famous {
           font-size: 24px;
           font-size: 1.5rem;
           font-weight: 400; }
+        section.famous .switch_block ul li a p.shortWord {
+          display: block; }
+          section.famous .switch_block ul li a p.shortWord br {
+            display: none; }
         section.famous .switch_block ul li a b {
           width: 50px;
           height: 3px;
@@ -778,6 +782,10 @@ section.famous {
                 position: absolute;
                 top: 0;
                 left: -10px; }
+            section.famous .switch_block ul li a p.shortWord {
+              font-size: 0.8125rem; }
+              section.famous .switch_block ul li a p.shortWord br {
+                display: block; }
             section.famous .switch_block ul li a .tt {
               width: 50%; }
               section.famous .switch_block ul li a .tt span {

@@ -406,7 +406,7 @@ window.requestAnimFrame = (function(){
                     url: 'https://bioessence.webgene.com.tw/api/Send_User',
                     data: senddata
                 }).then((response) => {
-                    console.log(response);
+                    //console.log(response);
 
                     if(response.data.status === '200'){
                         if(type === 'gold'){
