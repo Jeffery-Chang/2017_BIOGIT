@@ -9,7 +9,8 @@
     opacity: 0;
 }
 
-.wow, .index_kv, .easy_kv, .product_kv, .form_kv{
+/*.wow, .index_kv, .easy_kv, .product_kv, .form_kv{*/
+.wow, .product_kv, .form_kv{
     visibility: hidden;
 }
 
@@ -34,16 +35,15 @@ header.fixed.show{
     opacity: 0;
     transform: scale(.8);
 }
-.easy h1 p img, .easy h1 span, .easy h2 img{
+/*.easy h1 p img, .easy h1 span, .easy h2 img{
     opacity: 0;
 }
 .bubble_block li p{
     transform: scale(0);
-}
+}*/
 
-.wa-mediabox-container iframe{
+.gold_block .open a img, .purple_block .open a img{
     width: 100%;
-    height: 100%;
 }
 
 .floatDown{

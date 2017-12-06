@@ -196,7 +196,7 @@ section.index {
     width: 480px;
     height: auto;
     position: absolute;
-    top: 4%;
+    top: 12%;
     left: 25%; }
     section.index h1 p:nth-of-type(1) > img {
       width: 100%;
@@ -236,7 +236,7 @@ section.index {
             filter: blur(1px); }
   section.index .bubble_block p.b_3 {
     width: 90px;
-    top: 62%;
+    top: 70%;
     left: 31%; }
   section.index .bubble_block p.b_4 {
     width: 237px;
@@ -247,18 +247,16 @@ section.index {
             filter: blur(2px); }
   section.index .bubble_block p.b_5 {
     width: 300px;
-    top: 45%;
-    right: 5%; }
+    top: 52%;
+    right: -5%; }
   @media only screen and (max-width: 1680px) {
     section.index h1 {
       position: absolute;
-      top: 4%;
       left: 20%; } }
   @media only screen and (max-width: 1366px) {
     section.index h1 {
       position: absolute;
-      top: 4%;
-      left: 14%; }
+      left: 16%; }
     section.index .bubble_block p.b_2 {
       right: 10%; }
     section.index .bubble_block p.b_4 {
@@ -347,17 +345,18 @@ section.easy {
         line-height: 1.5;
         color: #8c673d;
         letter-spacing: 1.5px; }
-    section.easy .say_con h2 {
-      margin: 50px auto 0 auto;
-      max-width: 480px; }
-      section.easy .say_con h2 > img {
-        width: 100%;
-        height: auto;
-        display: block; }
     section.easy .say_con .vivien {
       position: absolute;
       top: -100%;
       left: -85%; }
+  section.easy h2 {
+    margin: 50px auto 0 auto;
+    max-width: 480px;
+    margin-right: 90px; }
+    section.easy h2 > img {
+      width: 100%;
+      height: auto;
+      display: block; }
   section.easy ul.bubble_block {
     margin-left: 350px;
     position: relative;
@@ -388,7 +387,7 @@ section.easy {
       section.easy .say_con {
         margin-left: 30%;
         width: 70%;
-        padding: 0 20px; }
+        padding: 20px 20px 0; }
         section.easy .say_con h1 p {
           width: 100%; }
         section.easy .say_con h1 span {
@@ -405,10 +404,6 @@ section.easy {
           right: -15%;
           bottom: -40%;
           font-size: 2.1875rem; }
-        section.easy .say_con h2 {
-          width: 130%;
-          margin-top: 30px;
-          margin-left: -18%; }
         section.easy .say_con .vivien {
           width: 65%;
           top: -30%;
@@ -417,11 +412,17 @@ section.easy {
             width: 100%;
             height: auto;
             display: block; }
+      section.easy h2 {
+        margin: 0 auto;
+        margin-top: 60px;
+        position: relative;
+        z-index: 5;
+        width: 80%; }
       section.easy ul.bubble_block {
         margin-left: 0;
         width: 100%;
         font-size: 0;
-        margin-top: 80px; }
+        margin-top: 35px; }
         section.easy ul.bubble_block li {
           width: 24%; }
         section.easy ul.bubble_block li:nth-of-type(1),
@@ -659,7 +660,7 @@ section.famous {
       overflow: hidden;
       margin: 40px auto; }
     section.famous .switch_block ul {
-      width: 2000px;
+      width: 100%;
       text-align: left; }
       section.famous .switch_block ul li {
         display: inline-block;
@@ -674,6 +675,20 @@ section.famous {
             width: 100%;
             height: auto;
             display: block; }
+          section.famous .switch_block ul li a p.photo span {
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            transition: ease-out 0.3s;
+            margin-left: -10px;
+            display: inline-block;
+            color: #fff;
+            line-height: 1.2;
+            padding: 5px 0;
+            background: rgba(135, 94, 11, .6); }
           section.famous .switch_block ul li a p.photo:before {
             content: '';
             display: inline-block;
@@ -718,6 +733,9 @@ section.famous {
           position: absolute;
           top: 0;
           left: 5px; }
+        section.famous .switch_block ul li a:hover p.photo span {
+          opacity: 1;
+          margin-left: 0px; }
         section.famous .switch_block ul li a:hover b {
           margin-left: 10px; }
   @media only screen and (max-width: 1024px) {
@@ -752,6 +770,9 @@ section.famous {
             section.famous .switch_block ul li a p.photo {
               width: 45%;
               margin: 0 auto; }
+              section.famous .switch_block ul li a p.photo span {
+                opacity: 1;
+                margin-left: 0; }
               section.famous .switch_block ul li a p.photo:before {
                 width: 100%;
                 position: absolute;
@@ -869,6 +890,47 @@ section.pdt_block .c_2 p.board_gold {
   left: 0; }
 section.pdt_block .c_2 p.board_purple {
   right: 0; }
+section.pdt_block .c_2 p.board_gold img,
+section.pdt_block .c_2 p.board_purple img {
+  margin-bottom: 20px; }
+section.pdt_block .c_2 p.board_gold a,
+section.pdt_block .c_2 p.board_purple a {
+  display: block;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 73px;
+  color: white;
+  width: 140px;
+  height: 73px;
+  text-align: center; }
+  section.pdt_block .c_2 p.board_gold a:after,
+  section.pdt_block .c_2 p.board_purple a:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-right: none;
+    border-bottom: 6px solid transparent;
+    border-left: 10px solid white;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-top: -2px;
+    -webkit-animation: bounce 1.5s infinite;
+    animation: bounce 1.5s infinite; }
+  section.pdt_block .c_2 p.board_gold a:hover:after,
+  section.pdt_block .c_2 p.board_purple a:hover:after {
+    -webkit-animation: bounce 0s infinite;
+    animation: bounce 0s infinite; }
+section.pdt_block .c_2 p.board_gold a.gold,
+section.pdt_block .c_2 p.board_purple a.gold {
+  background: url(../img/btn_gold.png) no-repeat center center;
+  background-size: 100%; }
+section.pdt_block .c_2 p.board_gold a.purple,
+section.pdt_block .c_2 p.board_purple a.purple {
+  background: url(../img/btn_purple.png) no-repeat center center;
+  background-size: 100%; }
 section.pdt_block .m_pdtBlock {
   display: none; }
 @media only screen and (max-device-width: 736px) and (orientation: portrait) {
@@ -1081,12 +1143,14 @@ section.lottery {
           border-bottom: 8px solid transparent;
           border-left: 12px solid white;
           vertical-align: middle;
-          margin-left: 10px;
+          margin-left: 15px;
           margin-top: -2px;
-          transition: ease-out 0.3s; }
+          -webkit-animation: bounce 1.5s infinite;
+          animation: bounce 1.5s infinite; }
         section.lottery .choose_block .gold_box a:hover:after,
         section.lottery .choose_block .purple_box a:hover:after {
-          margin-left: 20px; }
+          -webkit-animation: bounce 0s infinite;
+          animation: bounce 0s infinite; }
     section.lottery .choose_block .gold_box p.pdt {
       max-width: 193px;
       left: -220px; }
@@ -1353,6 +1417,9 @@ section.lottery {
     .pop section a.send_purple {
       background: url(../img/btn_purple.png) no-repeat top center;
       background-size: 100%; }
+    .pop section a.send_fb {
+      background-color: #4165af;
+      border-radius: 5px; }
   .pop section.gold {
     background-image: linear-gradient(135deg, #eee2c3 0%, #7d5210 50%, #f9f0d4 100%); }
     .pop section.gold .form h2 b {
@@ -1527,7 +1594,7 @@ section.lottery {
   top: 0;
   left: 0;
   z-index: 101;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 6px; }
   .activity section {
     width: 100%;
@@ -1693,6 +1760,15 @@ section.lottery {
       .activity section .item_block ul.prize li:nth-of-type(2) p img {
         margin-left: -10px; } }
 
+.private section h2 {
+  margin: 20px auto; }
+.private section article {
+  text-align: left; }
+.private section .item_block {
+  margin-top: 30px; }
+  .private section .item_block ul.list {
+    width: 100%; }
+
 a.close {
   display: inline-block;
   width: 70px;
@@ -1840,7 +1916,26 @@ a.close {
 .menuToggle input:checked ~ .menu {
   right: 0px;
   opacity: 1; }
-
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  40% {
+    -webkit-transform: translateX(-30px);
+    transform: translateX(-30px); }
+  60% {
+    -webkit-transform: translateX(-15px);
+    transform: translateX(-15px); } }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px); }
+  40% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px); }
+  60% {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px); } }
 .trans_bg {
   width: 100%;
   height: 100%;

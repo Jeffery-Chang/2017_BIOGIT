@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>肌膚的有氧教室｜Bio Essence</title>
+        <title>肌膚的有氧教室｜Bio essence</title>
         <!-- facebook share -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="肌膚的有氧教室｜Bio Essence" />
-        <meta property="og:description" content="「全新碧歐斯 生物能量複合素」，加強肌膚自我修復更新的能力；生物成分極致活化，讓有效成分超導吸收。讓肌膚就像做了有氧運動一樣美麗。" />
-        <meta property="og:image" content="img/600x315.png" />
+        <meta property="og:title" content="肌膚的有氧教室｜Bio essence" />
+        <meta property="og:description" content="不只身體，肌膚也需要有氧運動，不流汗也能維持肌膚美麗的秘密，等你來發掘。還有機會抽中全新商品，讓整個冬季保養超有感。" />
+        <meta property="og:image" content="http://bio-essence.webgene.com.tw/img/600x315.png" />
         <!-- favicon -->
         <link rel="icon" href="img/favicon.ico">
         <!-- css style -->
@@ -28,6 +28,7 @@
         <script src="js/vendor/axios.min.js"></script>
         <script src="js/vendor/es6-promise.min.js"></script>
         <script src="js/vendor/es6-promise.auto.min.js"></script>
+        <script src="js/vendor/siema.min.js"></script>
         <!-- Facebook Pixel Code -->
         <script>
             !function(a,c,d,g,h,i,j){a.fbq||(h=a.fbq=function(){h.callMethod?h.callMethod.apply(h,arguments):h.queue.push(arguments)},!a._fbq&&(a._fbq=h),h.push=h,h.loaded=!0,h.version='2.0',h.queue=[],i=c.createElement(d),i.async=!0,i.src=g,j=c.getElementsByTagName(d)[0],j.parentNode.insertBefore(i,j))}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -54,8 +55,7 @@
             var google_remarketing_only = false;
             /* ]]> */
         </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
         <noscript>
             <div style="display:inline;">
                 <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/861129262/?label=XcKSCNm5mG4QrpTPmgM&amp;guid=ON&amp;script=0"/>
@@ -138,13 +138,13 @@
                                 <p><img src="img/benefit_title.png" alt=""></p>
                                 <span>運動的風氣越來越盛行，但大多數的人都忘了幫肌膚做有氧運動！<br>肌膚吸飽了新鮮空氣，不化妝也能充滿元氣與活力！</span>
                             </h1>
-                            <h2>
-                                <img src="img/benefit_highlight.png" alt="">
-                            </h2>
                             <div class="vivien">
                                 <img class="easy_kv fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s" src="img/benefit_vivien.png" alt="">
                             </div>
                         </div>
+                        <h2>
+                            <img src="img/benefit_highlight.png" alt="">
+                        </h2>
                         <ul class="bubble_block">
                             <li>
                                 <p><img src="img/benefit_bubble_1.png" alt=""></p>
@@ -181,7 +181,8 @@
                         <h1><img src="img/commend_title.png" alt=""></h1>
                         <h2>跟著達人們一起，讓肌膚動起來</h2>
                         <div class="switch_block">
-                            <a href="" class="pre" @click="switchCnt = 0" @click.prevent.self><span class="icon-arrow"></span></a>
+                            <!--<a href="" class="pre" @click="switchCnt = 0" @click.prevent.self><span class="icon-arrow"></span></a>-->
+                            <a href="" class="pre" @click.prevent.self><span class="icon-arrow"></span></a>
                             <div class="hidden">
                                 <ul>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
@@ -192,43 +193,47 @@
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
-                                        <a href="" @click="gaclick('elle');">
+                                        <a href="http://www.elle.com.tw/beauty/news/bio_1129" target="_blank" @click="gaclick('elle');">
                                             <p class="photo"><img src="img/commend_pic_02.png" alt=""></p>
-                                            <div class="tt"><span>Elle 資深總編輯</span>
-                                                <p class="name">盧淑芬</p><b></b></div>
+                                            <div class="tt"><span>Elle</span>
+                                                <p class="name">編輯部推薦</p><b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
-                                        <a href="" @click="gaclick('blogger');">
-                                            <p class="photo"><img src="img/commend_pic_03.png" alt=""></p>
+                                        <a href="https://www.facebook.com/permalink.php?story_fbid=957731794382547&id=110678052421263" target="_blank" @click="gaclick('blogFisha');">
+                                            <p class="photo"><img src="img/commend_pic_05.png" alt=""></p>
                                             <div class="tt"><span>人氣部落客</span>
-                                                <p class="name">Michelle</p><b></b></div>
+                                                <p class="name">芳瑜</p><b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 1 || switchCnt == 2">
-                                        <a href="">
-                                            <p class="photo"><img src="img/commend_pic_01.png" alt=""></p>
-                                            <div class="tt"><span>「凱文瘋了」</span>
-                                                <p class="name">美容教父也動起來</p><b></b></div>
+                                        <a href="https://www.facebook.com/sylwang/posts/2010701032273698" target="_blank" @click="gaclick('blogSylvia');">
+                                            <p class="photo"><img src="img/commend_pic_04.png" alt=""></p>
+                                            <div class="tt"><span>人氣部落客</span>
+                                                <p class="name">Sylvia</p><b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 1 || switchCnt == 2">
-                                        <a href="">
-                                            <p class="photo"><img src="img/commend_pic_01.png" alt=""></p>
-                                            <div class="tt"><span>「凱文瘋了」</span>
-                                                <p class="name">美容教父也動起來</p><b></b></div>
+                                        <!--<a href="" @click="gaclick('blogMandy');"  @click.prevent.self>-->
+                                        <a href=""  @click.prevent.self>
+                                            <p class="photo"><img src="img/commend_pic_06.png" alt=""><span>Coming soon</span></p>
+                                            <div class="tt"><span>人氣部落客</span>
+                                                <p class="name">夏曼娣</p><b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 1 || switchCnt == 2">
-                                        <a href="">
-                                            <p class="photo"><img src="img/commend_pic_01.png" alt=""></p>
-                                            <div class="tt"><span>「凱文瘋了」</span>
-                                                <p class="name">美容教父也動起來</p><b></b></div>
+                                        <!--<a href="" @click="gaclick('blogAngelina');"  @click.prevent.self>-->
+                                        <a href="" @click.prevent.self>
+                                            <p class="photo"><img src="img/commend_pic_03.png" alt=""><span>Coming soon</span></p>
+                                            <div class="tt"><span>人氣部落客</span>
+                                                <p class="name">Angelina</p><b></b>
+                                            </div>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <a href="" class="next" @click="switchCnt = 1" @click.prevent.self><span class="icon-arrow"></span></a>
+                            <!--<a href="" class="next" @click="switchCnt = 1" @click.prevent.self><span class="icon-arrow"></span></a>-->
+                            <a href="" class="next" @click.prevent.self><span class="icon-arrow"></span></a>
                         </div>
                     </div>
                 </section>
@@ -248,8 +253,14 @@
                             <!--第二咖-->
                             <div class="cut_block c_2" style="display:none;">
                                 <p class="triangle"><img src="img/patent_pdt.png" alt=""></p>
-                                <p class="board_gold"><img src="img/pdt_gold_board.png" alt=""><a href="" ><img src="img/btn_buy.png" alt=""></a></p>
-                                <p class="board_purple"><img src="img/pdt_purple_board.png" alt=""><a href="" ><img src="img/btn_buy_purple.png" alt=""></a></p>
+                                <p class="board_gold">
+                                    <img src="img/pdt_gold_board.png" alt="">
+                                    <a href="https://goo.gl/jzSrz2" target="_blank" @click="gaclick('ecgold');" class="gold">立即購買</a>
+                                </p>
+                                <p class="board_purple">
+                                    <img src="img/pdt_purple_board.png" alt="">
+                                    <a href="https://goo.gl/EBu9zs" target="_blank" @click="gaclick('ecbounce');" class="purple">立即購買</a>
+                                </p>
                             </div>
                             <!--for mobile-->
                             <div class="m_pdtBlock">
@@ -267,7 +278,7 @@
                                     </div>
                                     <!--要打開的-->
                                     <div class="open">
-                                        <img src="img/m_pdt_des_gold.png" alt=""> 
+                                        <a href="https://goo.gl/jzSrz2" target="_blank" @click="gaclick('ecgold');"><img src="img/m_pdt_des_gold.png" alt=""></a>
                                     </div>
                                 </div>
                                 <!--紫色-->
@@ -284,7 +295,7 @@
                                     </div>
                                     <!--要打開的-->
                                     <div class="open">
-                                        <img src="img/m_pdt_des_purple.png" alt=""> 
+                                        <a href="https://goo.gl/EBu9zs" target="_blank" @click="gaclick('ecbounce');"><img src="img/m_pdt_des_purple.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -328,13 +339,13 @@
                             <!--填表單-->
                             <div class="form" v-show="goldStep == 1">
                                 <h1>加入肌膚的有氧教室</h1>
-                                <h2>就有機會獲得<b>Bio金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
+                                <h2>就有機會獲得<b>BIO金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
                                 <ul>
                                     <li><span>姓名</span>
                                         <input type="text" v-model="goldData.name">
                                     </li>
                                     <li><span>手機</span>
-                                        <input type="tel" placeholder="同一組手機號碼僅限參加一次" v-model="goldData.phone">
+                                        <input type="tel" placeholder="同一組手機號碼僅限參加一次" maxlength="10" v-model="goldData.phone">
                                         <p>*同一組手機號碼僅限參加一次</p>
                                     </li>
                                     <li><span>地址</span>
@@ -344,7 +355,7 @@
                                 </ul>
                                 <p>
                                     <input type="checkbox" class="checkbox-custom" name="checkbox" id="checkbox" />
-                                    <label for="checkbox" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;">約定事項</a> 並且同意遵守所有規定。</label>
+                                    <label for="checkbox" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;" @click="priFG = true" @click.prevent.self>個人資料授權</a> 並且同意遵守所有規定。</label>
                                 </p>
                                 <a href="" class="btn reset" @click="goldData.name = goldData.phone = goldData.address = ''" @click.prevent.self>重新填寫</a>
                                 <a href="" class="btn send_gold" @click="sendData($event, 'gold');">確認送出</a>
@@ -352,8 +363,8 @@
                             <!--完成-->
                             <div class="success" v-show="goldStep == 2">
                                 <h1>成功送出資料！</h1>
-                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享給好友，中獎機率更大喔！</h2>
-                                <a href="" class="btn send_gold" @click="sendShare($event);">
+                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享活動到個人Facebook，中獎機率更大喔！</h2>
+                                <a href="" class="btn send_fb" @click="sendShare($event);">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
                                         <g>
                                             <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
@@ -381,13 +392,13 @@
                             <!--填表單-->
                             <div class="form" v-show="purpleStep == 1">
                                 <h1>加入肌膚的有氧教室</h1>
-                                <h2>就有機會獲得<b>Bio金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
+                                <h2>就有機會獲得<b>BIO金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
                                 <ul>
                                     <li><span>姓名</span>
                                         <input type="text" v-model="purpleData.name">
                                     </li>
                                     <li><span>手機</span>
-                                        <input type="tel" placeholder="同一組手機號碼僅限參加一次" v-model="purpleData.phone">
+                                        <input type="tel" placeholder="同一組手機號碼僅限參加一次" maxlength="10"  v-model="purpleData.phone">
                                         <p>*同一組手機號碼僅限參加一次</p>
                                     </li>
                                     <li><span>地址</span>
@@ -397,7 +408,7 @@
                                 </ul>
                                 <p>
                                     <input type="checkbox" class="checkbox-custom" name="checkbox" id="checkbox_2" />
-                                    <label for="checkbox_2" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;">約定事項</a> 並且同意遵守所有規定。</label>
+                                    <label for="checkbox_2" class="checkbox-custom-label">已詳閱 <a href="" target="_blank" style="text-decoration: underline;" @click="priFG = true" @click.prevent.self>個人資料授權</a> 並且同意遵守所有規定。</label>
                                 </p>
                                 <a href="" class="btn reset" @click="purpleData.name = purpleData.phone = purpleData.address = ''" @click.prevent.self>重新填寫</a>
                                 <a href="" class="btn send_purple" @click="sendData($event, 'purple');">確認送出</a>
@@ -405,8 +416,8 @@
                             <!--完成-->
                             <div class="success" v-show="purpleStep == 2">
                                 <h1>成功送出資料！</h1>
-                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享給好友，中獎機率更大喔！</h2>
-                                <a href="" class="btn send_purple" @click="sendShare($event);">
+                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享活動到個人Facebook，中獎機率更大喔！</h2>
+                                <a href="" class="btn send_fb" @click="sendShare($event);">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
                                         <g>
                                             <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
@@ -431,7 +442,7 @@
                     <a href="" class="close" @click="actFG = false" @click.prevent.self></a>
                     <section>
                         <div class="center">
-                            <h1>Bio-essence 肌膚有氧運動</h1>
+                            <h1>Bio essence 肌膚有氧運動</h1>
                             <h2>活動登錄抽獎活動辦法</h2>
                             <div class="item_block">
                                 <span>活動方式</span>
@@ -439,18 +450,18 @@
                             </div>
                             <div class="item_block">
                                 <span>活動期間</span>
-                                <p>2017年12月8日至2017年12月31日,將於2018年1月15日公布在活動網站。</p>
+                                <p>2017年12月8日至2018年1月14日,將於2018年1月25日公布在活動網站。</p>
                             </div>
                             <div class="item_block">
                                 <span>贈品</span>
                                 <ul class="prize">
                                     <li>
                                         <p><img src="img/pop_pdt_gold.png" alt=""></p>
-                                        <span>Bio金萃黃金比例雙精華<b>30名</b></span>
+                                        <span>BIO金萃黃金比例雙精華<b>30名</b></span>
                                     </li>
                                     <li>
                                         <p><img src="img/pop_pdt_purple.png" alt=""></p>
-                                        <span>Bio膠原彈潤超澎精華霜<b>30名</b></span>
+                                        <span>BIO膠原彈潤超澎精華霜<b>30名</b></span>
                                     </li>
                                 </ul>
                             </div>
@@ -486,6 +497,54 @@
                     </section>
                 </div>
             </transition>
+            <!--POP 活動辦法-->
+            <transition name="fade">
+                <div class="activity private" v-show="priFG">
+                    <a href="" class="close" @click="priFG = false" @click.prevent.self></a>
+                    <section>
+                        <div class="center">
+                            <h2>隱私權條款</h2>
+                            <article>
+                                歡迎您瀏覽使用本網站，依沃盛有限公司（以下稱「本公司」）隱私權保護政策與相關法令之規定，請您於填寫個人資料前，務必詳讀下列條款內容。若您勾選「同意」，即表示您同意遵守下列條款，並同意本公司依下列條款蒐集、處理、使用您於本網站提供之個人資料。
+                            </article>
+                            <div class="item_block">
+                                <ul class="list">
+                                    <li>
+                                        本公司因舉辦「Bio essence ─ 肌膚有氧運動 活動登錄抽獎」，為活動後續贈獎相關聯繫，需請您提供以下個人資料：姓名、聯絡方式 (包括電話號碼與居住地址) 或其他得以直接或間接識別您個人之資料。
+                                    </li>
+                                    <li>
+                                        您所提供的個人資料，將僅於活動期間（2017年12月8日至2018年1月31日）做為本公司通知&#060; Bio essence ─ 肌膚有氧運動 活動登錄抽獎 &#062;領獎之確認身份、與您進行聯絡用，不會用作其它用途。活動結束後(2018年1月14日)，所有個人資料將以完整刪除不作他用。
+                                    </li>
+                                    <li>
+                                        個人資料利用之地區：台灣、金門、澎湖、馬祖地區。
+                                    </li>
+                                    <li>
+                                        個人資料利用之對象及方式：由執行本活動時之必要人員利用之，利用人員須依執行本活動作業所必要方式利用此個人資料。
+                                    </li>
+                                    <li>
+                                        您可自由選擇是否提供本公司您的個人資料，若您不願提供個人資料，仍可造訪本網站部分內容，但可能無法使用網站中特定服務等功能，敬請諒察。
+                                    </li>
+                                    <li>
+                                        若您所提供之個人資料，經檢舉或本公司發現不足以確認您的身分真實性或有冒用、盜用、資料不實等情形，本公司有權暫時停止提供對您的服務。
+                                    </li>
+                                    <li>
+                                        您瞭解此一同意符合個人資料保護法及相關法規之要求，具有書面同意本公司蒐集、處理及利用您的個人資料之效果。
+                                    </li>
+                                    <li>
+                                        依個人資料保護法第三條規定得行使之權利及方式：
+                                        <br> 活動參與者於身份獲確認後，得向透過Bio essence客服信箱或電話聯繫(客服專線 02-8712-8807 E-mail: beautytw@bioessence.com.sg
+                                        <br> (1) 提出申請，以查詢、閱覽、製給複製本；或補充／更正、請求停止蒐集、處理、利用或刪除個人資料內容之一部或全部。（註：參加人申請查詢、閱覽、製給複製本時，將酌收必要成本費用。）
+                                        <br> (2) 參與者填寫本活動參與所須個人資料後，以任何方式遞送至「沃盛有限公司」收執時，均視為已同意提供予「沃盛有限公司」辦理本活動之特定目的必要範圍內處理及利用；此外，參與者可決定是否填寫相關之個人資料欄位，若參加者不填寫相關欄位時，「沃盛有限公司」則於決定是否符合參與本活動之資格時，擁有自行判斷之權利。
+                                        <br> (3) 保護本活動參與者資料之安全措施：「沃盛有限公司」將依據相關法令之規定及業已建構之完善措施，保障本活動參與者個人資料之安全。
+                                    </li>
+                                </ul>
+                            </div>
+                            <h2>隱私權保護政策修訂</h2>
+                            <article>為因應社會環境及法令的變遷與科技的進步，為保障客戶個人資料安全及隱私，「沃盛有限公司」得隨時修訂本政策，並將儘速更新與公告。</article>
+                        </div>
+                    </section>
+                </div>
+            </transition>
         </div>
         <script src="bundle/index.js"></script>
         <!-- Google 再营销代码 -->
@@ -499,8 +558,7 @@
             var google_remarketing_only = true;
             /* ]]> */
         </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
         <noscript>
             <div style="display:inline;">
                 <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/861129262/?guid=ON&amp;script=0"/>

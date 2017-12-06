@@ -13,8 +13,9 @@ window.requestAnimFrame = (function(){
             menuHeader: false,
             goldFG: false, goldStep: 1,
             purpleFG: false, purpleStep: 1,
-            switchCnt: 0,
+            switchCnt: 2,
             actFG: false,
+            priFG: false,
             gaV3: true, gaV5: true, gaV6: true,
             goldData:{ name: '', phone: '', address: '', gift: 'A' },
             purpleData:{ name: '', phone: '', address: '', gift: 'B' }
@@ -29,8 +30,9 @@ window.requestAnimFrame = (function(){
             var $this = this;
             window.onload = function(){
                 $this.initKV();
-                $this.initEasy();
+                //$this.initEasy();
                 $this.initPatent();
+                if(!isMobile.phone) $this.initFamous();
                 $this.initProduct();
                 $this.initForm();
 
@@ -79,13 +81,15 @@ window.requestAnimFrame = (function(){
                     var oneTween = TweenMax.to(bubble1, .5,{
                         opacity: 1,
                         scale: 1,
-                        delay: 1.25,
+                        //delay: 1.25,
+                        delay: .25,
                         paused: true
                     });
                     var twoTween = TweenMax.to(bubble2, .5,{
                         opacity: 1,
                         scale: 1,
-                        delay: 1.5,
+                        //delay: 1.5,
+                        delay: .5,
                         paused: true,
                         onComplete: function(){
                             for (var i = 0; i < bubbleAll.length; i++) {
@@ -96,16 +100,18 @@ window.requestAnimFrame = (function(){
                             }
                         }
                     });
+                    oneTween.play();
+                    twoTween.play();
                 }
 
                 // kv進場
-                var wow = new WOW({
+                /*var wow = new WOW({
                     boxClass: 'index_kv',
                     callback: function(box) {
                         if(!isMobile.phone) oneTween.play();
                         if(!isMobile.phone) twoTween.play();
                     }
-                }).init();
+                }).init();*/
             },
             initEasy: function(){
                 var word = document.querySelectorAll('.easy h1 p img, .easy h1 span, .easy h2 img');
@@ -160,6 +166,29 @@ window.requestAnimFrame = (function(){
                         });
                     }
                 }).init();
+            },
+            initFamous: function(){
+                const prev = document.querySelector('.switch_block .pre');
+                const next = document.querySelector('.switch_block .next');
+                const mySiema = new Siema({
+                    selector: '.switch_block ul',
+                    duration: 500,
+                    easing: 'ease',
+                    perPage: 3,
+                    startIndex: 0,
+                    draggable: true,
+                    multipleDrag: true,
+                    threshold: 20,
+                    loop: true,
+                    onInit: () => {},
+                    onChange: () => {},
+                });
+                prev.addEventListener('click', () => mySiema.prev(3));
+                next.addEventListener('click', () => mySiema.next(3));
+
+                setInterval(function(){
+                    mySiema.next(3);
+                }, 5000);
             },
             initProduct: function(){
                 var title = document.querySelector('.pdt_block h1 img');
@@ -338,7 +367,12 @@ window.requestAnimFrame = (function(){
             },
             sendShare: function(evt){
                 evt.preventDefault();
-                this.shareFB(location.href, '?back=1');
+                var date = new Date();
+                var year = date.getFullYear().toString();
+                var month = (date.getMonth()+1).toString();
+                var day = ((date.getDate() < 10) ? '0' : '') + date.getDate().toString();
+                var urlDate = year + month + day;
+                this.shareFB(location.href, '?back=1&v='+urlDate);
             },
             sendData: function(evt, type){
                 if(evt) evt.preventDefault();
@@ -351,14 +385,14 @@ window.requestAnimFrame = (function(){
                     if (!CH.checktxt(this.goldData.name)) err += "請填寫您的姓名\n";
                     if (!CH.isValidCell(this.goldData.phone)) err += "請填寫10碼的手機號碼(格式 0912345678)\n";
                     if (!CH.checktxt(this.goldData.address)) err += "請填寫您的地址\n";
-                    if(!read) err += "請詳閱約定事項並同意";
+                    if(!read) err += "請詳閱個人資料授權並同意";
                     senddata = this.goldData;
                 }else if(type === 'purple'){
                     read = document.getElementById("checkbox_2").checked;
                     if (!CH.checktxt(this.purpleData.name)) err += "請填寫您的姓名\n";
                     if (!CH.isValidCell(this.purpleData.phone)) err += "請填寫10碼的手機號碼(格式 0912345678)\n";
                     if (!CH.checktxt(this.purpleData.address)) err += "請填寫您的地址\n";
-                    if(!read) err += "請詳閱約定事項並同意";
+                    if(!read) err += "請詳閱個人資料授權並同意";
                     senddata = this.purpleData;
                 }
 
@@ -369,7 +403,7 @@ window.requestAnimFrame = (function(){
 
                 axios({
                     method: 'post',
-                    url: 'api/Send_User',
+                    url: 'https://bioessence.webgene.com.tw/api/Send_User',
                     data: senddata
                 }).then((response) => {
                     console.log(response);
@@ -444,7 +478,8 @@ window.requestAnimFrame = (function(){
         watch:{
             goldFG: 'setOverFlow',
             purpleFG: 'setOverFlow',
-            actFG: 'setOverFlow'
+            actFG: 'setOverFlow',
+            priFG: 'setOverFlow'
         }
     });
 })();
