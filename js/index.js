@@ -11,6 +11,7 @@ window.requestAnimFrame = (function(){
         el: '#indexPage',
         data: {
             menuHeader: false,
+            loadFG: false,
             goldFG: false, goldStep: 1,
             purpleFG: false, purpleStep: 1,
             switchCnt: 2,
@@ -28,7 +29,11 @@ window.requestAnimFrame = (function(){
         },
         mounted: function(){
             var $this = this;
+
             window.onload = function(){
+                $this.loadFG = true;
+
+                $this.setAndroid();
                 $this.initKV();
                 //$this.initEasy();
                 $this.initPatent();
@@ -45,10 +50,12 @@ window.requestAnimFrame = (function(){
                 this.menuHeader = (winTop > document.querySelector('.index').offsetHeight - 100) ? true : false;
                 (this.menuHeader) ? document.querySelector('header').classList.add('show') : document.querySelector('header').classList.remove('show');
 
-                var hdHeight = document.getElementsByTagName('header')[0].offsetHeight;
-                var hdObj = document.querySelector('.wrap');
-                var hdMargin = (isMobile.phone) ? '40px' : '80px';
-                hdObj.style.marginTop = (this.menuHeader == true) ? hdMargin : '';
+                if(this.loadFG == true){
+                    var hdHeight = document.getElementsByTagName('header')[0].offsetHeight;
+                    var hdObj = document.querySelector('.wrap');
+                    var hdMargin = (isMobile.phone) ? '40px' : '80px';
+                    hdObj.style.marginTop = (this.menuHeader == true) ? hdMargin : '';
+                }
 
                 var div3offest = document.querySelector('.famous').offsetTop - document.querySelector('.famous').offsetHeight;
                 if(this.gaV3 == true && winTop > div3offest){
@@ -57,7 +64,7 @@ window.requestAnimFrame = (function(){
                 }
             },
             setOverFlow: function(){
-                document.body.style.cssText = (this.goldFG == true || this.purpleFG == true || this.actFG == true) ? 'overflow-y: hidden' : '';
+                document.body.style.cssText = (this.loadFG == false || this.goldFG == true || this.purpleFG == true || this.actFG == true) ? 'overflow-y: hidden' : '';
             },
             moveToPdt: function(){
                 var pos = document.querySelector('.bg_2').offsetTop;
@@ -65,6 +72,27 @@ window.requestAnimFrame = (function(){
                 if(isMobile.phone) document.querySelector('.menuToggle input').click();
 
                 gaclick('product');
+            },
+            setAndroid: function(){
+                // 處理安卓input蓋版的問題
+                if(getMobileOperatingSystem()) {
+                    screen.orientation.onchange = function (){
+                        var way = screen.orientation.type.match(/\w+/)[0];
+                        if (way == "landscape"){
+                            $('.trans_bg').removeClass('input_focus');
+                        }
+                    };
+                };
+                $('input').on('focus',function(){
+                    $('.trans_bg').addClass('input_focus');
+                });
+                function getMobileOperatingSystem() {
+                    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                    if (/android/i.test(userAgent)) {
+                        return true;
+                    }
+                    return false;
+                };
             },
             initKV: function(){
                 // mobile不做泡泡進場
@@ -144,6 +172,7 @@ window.requestAnimFrame = (function(){
                 }).init();
             },
             initPatent: function(){
+                var speed = (isMobile.phone) ? 0 : 150;
                 var word = document.querySelectorAll('.text_block h1, .text_block h2, .text_block h3, .text_block .video');
                 var boxName = (isMobile.phone) ? 'patent_kv_m' : 'patent_kv_pc';
                 var video = document.querySelector('.text_block .video');
@@ -154,7 +183,7 @@ window.requestAnimFrame = (function(){
                 // patent進場
                 var wow = new WOW({
                     boxClass: boxName,
-                    offset: 200,
+                    offset: speed,
                     delay: .5,
                     callback: function(box) {
                         gapage('V2');
@@ -196,6 +225,7 @@ window.requestAnimFrame = (function(){
                 title.classList.add('fadeInDown');
                 title.setAttribute('data-wow-duration', '.5s');
                 if(!isMobile.phone){
+                    var speed = (isMobile.phone) ? 0 : 150;
                     var section1 = document.querySelector('.cut_block.c_1');
                     var section2 = document.querySelector('.cut_block.c_2');
                     var pdtIcon = document.querySelector('.pdt_block .triggle img');
@@ -206,39 +236,38 @@ window.requestAnimFrame = (function(){
                     var purpleBubble = document.querySelector('.pdt_block .bubble_purple img');
                     var purpleBoard = document.querySelectorAll('.cut_block.c_2 .board_purple');
                     var pdtTween = new TimelineMax({ paused: true, delay: .5 });
-                    var step1 = TweenMax.to(pdtIcon, .75,{
+                    var step1 = TweenMax.to(pdtIcon, .5,{
                         scale: 1,
-                        delay: .25
+                        delay: .15
                     });
-                    var step2 = TweenMax.to([gold, purple], .75,{
+                    /*var step2 = TweenMax.to([gold, purple], .5,{
                         opacity: 1,
-                        x: 0,
-                        delay: .25
-                    });
-                    var step3 = TweenMax.to([goldBubble, purpleBubble], .75,{
+                        x: 0
+                    });*/
+                    var step3 = TweenMax.to([gold, purple, goldBubble, purpleBubble], .5,{
                         opacity: 1,
                         x: 0,
                         y: 0,
                         scale: 1,
-                        delay: .25
+                        delay: .15
                     });
-                    var step4 = TweenMax.to(section1, .75,{
+                    var step4 = TweenMax.to(section1, .5,{
                         opacity: 0,
-                        delay: .75,
+                        delay: .5,
                         onComplete: function(){
                             TweenMax.set(section1, { display: 'none' });
                             TweenMax.set(section2, { display: 'block' });
                         }
                     });
-                    var step5 = TweenMax.to(section2, .75,{
+                    var step5 = TweenMax.to(section2, .5,{
                         opacity: 1
                     });
-                    var step6 = TweenMax.to([goldBoard, purpleBoard], .75,{
+                    var step6 = TweenMax.to([goldBoard, purpleBoard], .5,{
                         opacity: 1,
                         x: 0
                     });
                     pdtTween.add(step1);
-                    pdtTween.add(step2);
+                    //pdtTween.add(step2);
                     pdtTween.add(step3);
                     pdtTween.add(step4);
                     pdtTween.add(step5);
@@ -254,7 +283,7 @@ window.requestAnimFrame = (function(){
                     // product進場
                     var wow = new WOW({
                         boxClass: 'product_kv',
-                        offset: 300,
+                        offset: speed,
                         delay: .1,
                         callback: function(box) {
                             gapage('V4');
@@ -279,7 +308,7 @@ window.requestAnimFrame = (function(){
                     // product進場
                     var wow = new WOW({
                         boxClass: 'product_kv',
-                        offset: 300,
+                        offset: 0,
                         delay: .1,
                         callback: function(box) {
                             gapage('V4');
@@ -287,18 +316,19 @@ window.requestAnimFrame = (function(){
                     }).init();
                     var wow = new WOW({
                         boxClass: 'product_kv_g',
-                        offset: 300,
+                        offset: 0,
                         delay: .1
                     }).init();
                     var wow = new WOW({
                         boxClass: 'product_kv_p',
-                        offset: 300,
+                        offset: 0,
                         delay: .1
                     }).init();
                 }
             },
             initForm: function(){
                 var $this = this;
+                var speed = (isMobile.phone) ? 0 : 150;
                 var h1 = document.querySelector('.lottery h1 img');
                 var h2 = document.querySelector('.lottery h2');
                 var h3 = document.querySelector('.lottery h3');
@@ -332,7 +362,7 @@ window.requestAnimFrame = (function(){
                 // form進場
                 var wow = new WOW({
                     boxClass: 'form_kv',
-                    offset: 300,
+                    offset: speed,
                     delay: .1,
                     callback: function(box) {
                         if($this.gaV5 == true){
@@ -376,6 +406,7 @@ window.requestAnimFrame = (function(){
             },
             sendData: function(evt, type){
                 if(evt) evt.preventDefault();
+                var $this = this;
                 var err = '';
                 var read = false;
                 var senddata = '';
@@ -401,7 +432,37 @@ window.requestAnimFrame = (function(){
                     return;
                 }
 
-                axios({
+                $.ajax({
+                    method: "POST",
+                    url: 'https://bioessence.webgene.com.tw/api/Send_User',
+                    data: senddata,
+                    success: function(result){
+                        if(result.status === '200'){
+                            if(type === 'gold'){
+                                $this.goldStep = 2;
+                                gaclick('biogoldenter');
+                            }else if(type === 'purple'){
+                                $this.purpleStep = 2;
+                                gaclick('biobounceenter');
+                            }
+                        }else if(result.status === '110'){
+                            if(type === 'gold'){
+                                $this.goldStep = 3;
+                                gaclick('biogoldenter');
+                            }else if(type === 'purple'){
+                                $this.purpleStep = 3;
+                                gaclick('biobounceenter');
+                            }
+                        }else{
+                            alert('資料傳送錯誤，請重新再試！');
+                        }
+                    },
+                    error: function(result){
+                        alert('系統繁忙，請稍候再試，謝謝！');
+                    }
+                });
+
+                /*axios({
                     method: 'post',
                     url: 'https://bioessence.webgene.com.tw/api/Send_User',
                     data: senddata
@@ -427,7 +488,7 @@ window.requestAnimFrame = (function(){
                     }else{
                         alert('資料傳送錯誤，請重新再試！');
                     }
-                });
+                });*/
             },
             shareFB: function(url, track){
                 var fb_url = (isMobile.phone) ? 'http://m.facebook.com/sharer.php?u=' : 'http://www.facebook.com/sharer.php?u=';
@@ -476,6 +537,7 @@ window.requestAnimFrame = (function(){
             window.removeEventListener('scroll', this.ctrlScroll);
         },
         watch:{
+            loadFG: 'setOverFlow',
             goldFG: 'setOverFlow',
             purpleFG: 'setOverFlow',
             actFG: 'setOverFlow',

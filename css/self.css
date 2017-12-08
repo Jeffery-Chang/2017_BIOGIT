@@ -9,6 +9,11 @@
     opacity: 0;
 }
 
+.loadingWrap {
+    position: fixed;
+    z-index: 999;
+}
+
 /*.wow, .index_kv, .easy_kv, .product_kv, .form_kv{*/
 .wow, .product_kv, .form_kv{
     visibility: hidden;
@@ -41,6 +46,10 @@ header.fixed.show{
 .bubble_block li p{
     transform: scale(0);
 }*/
+
+.input_focus.trans_bg {
+    display: none;
+}
 
 .gold_block .open a img, .purple_block .open a img{
     width: 100%;

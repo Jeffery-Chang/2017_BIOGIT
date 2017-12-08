@@ -7,8 +7,8 @@
         <title>肌膚的有氧教室｜Bio essence</title>
         <!-- facebook share -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="肌膚的有氧教室｜Bio essence" />
-        <meta property="og:description" content="不只身體，肌膚也需要有氧運動，不流汗也能維持肌膚美麗的秘密，等你來發掘。還有機會抽中全新商品，讓整個冬季保養超有感。" />
+        <meta property="og:title" content="女神的肌膚有氧教室報名中！" />
+        <meta property="og:description" content="想體驗肌膚有氧運動帶來的年輕活力？即刻回填資料並分享，就有機會抽中女神的美麗秘密，讓整個冬季保養超有感～" />
         <meta property="og:image" content="http://bio-essence.webgene.com.tw/img/600x315.png" />
         <!-- favicon -->
         <link rel="icon" href="img/favicon.ico">
@@ -21,13 +21,11 @@
         <script src="js/vendor/ga.js"></script>
         <script src="js/vendor/isMobile.min.js"></script>
         <script src="js/vendor/ch.min.js"></script>
-        <script src="js/vendor/vue.min.js"></script>
-        <script src="js/vendor/wow.min.js"></script>
-        <script src="js/vendor/TweenMax.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
         <script src="js/vendor/wa-mediabox.min.js"></script>
-        <script src="js/vendor/axios.min.js"></script>
-        <script src="js/vendor/es6-promise.min.js"></script>
-        <script src="js/vendor/es6-promise.auto.min.js"></script>
         <script src="js/vendor/siema.min.js"></script>
         <!-- Facebook Pixel Code -->
         <script>
@@ -43,7 +41,7 @@
         <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5561844"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=5561844&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" /></noscript>
         <!-- End Yahoo Code -->
     </head>
-    <body>
+    <body style="overflow-y: hidden">
         <!-- Google Code for &#23436;&#25104;&#36092;&#36023; Conversion Page -->
         <script type="text/javascript">
             /* <![CDATA[ */
@@ -63,6 +61,20 @@
         </noscript>
 
         <div id="indexPage" v-cloak>
+            <!--==============loading==============-->
+            <transition name="fade">
+                <div class="loadingWrap" v-if="!loadFG">
+                    <div class="loading">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </transition>
             <!-- ================= only fot ipad ================= -->
             <div class="trans_bg">
                 <div class="trans_ipad">
@@ -190,7 +202,7 @@
                                             <p class="photo"><img src="img/commend_pic_01.png" alt=""></p>
                                             <div class="tt"><span>「凱文瘋了」</span>
                                                 <p class="name">美容教父也動起來</p><p class="shortWord">抗初老必看，<br>讓你突破保養瓶頸</p>
-                                        <b></b></div>
+                                                <b></b></div>
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 0 || switchCnt == 2">
@@ -215,9 +227,8 @@
                                         </a>
                                     </li>
                                     <li v-show="switchCnt == 1 || switchCnt == 2">
-                                        <!--<a href="" @click="gaclick('blogMandy');"  @click.prevent.self>-->
-                                        <a href=""  @click.prevent.self>
-                                            <p class="photo"><img src="img/commend_pic_06.png" alt=""><span>Coming soon</span></p>
+                                        <a href="https://www.facebook.com/MandyGrass.tw/posts/1609208789126122" target="_blank" @click="gaclick('blogMandy');">
+                                            <p class="photo"><img src="img/commend_pic_06.png" alt=""></p>
                                             <div class="tt"><span>人氣部落客</span>
                                                 <p class="name">夏曼娣</p><p class="shortWord">保濕度提升，<br>妝更服貼</p><b></b></div>
                                         </a>
@@ -256,11 +267,11 @@
                                 <p class="triangle"><img src="img/patent_pdt.png" alt=""></p>
                                 <p class="board_gold">
                                     <img src="img/pdt_gold_board.png" alt="">
-                                    <a href="https://goo.gl/jzSrz2" target="_blank" @click="gaclick('ecgold');" class="gold">立即購買</a>
+                                    <a href="https://goo.gl/jzSrz2" target="_blank" @click="gaclick('ecgold');" class="gold"><span class="flash"></span>立即購買</a>
                                 </p>
                                 <p class="board_purple">
                                     <img src="img/pdt_purple_board.png" alt="">
-                                    <a href="https://goo.gl/EBu9zs" target="_blank" @click="gaclick('ecbounce');" class="purple">立即購買</a>
+                                    <a href="https://goo.gl/EBu9zs" target="_blank" @click="gaclick('ecbounce');" class="purple"><span class="flash"></span>立即購買</a>
                                 </p>
                             </div>
                             <!--for mobile-->
@@ -364,8 +375,8 @@
                             <!--完成-->
                             <div class="success" v-show="goldStep == 2">
                                 <h1>成功送出資料！</h1>
-                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享活動到個人Facebook，中獎機率更大喔！</h2>
-                                <a href="" class="btn send_fb" @click="sendShare($event);">
+                                <h2>感謝參加Bio essence<br>肌膚有氧教室活動<span><b><font>分享到個人Facebook</font></b><br><b><font>中獎機率更大喔！</font></b></span></h2>
+                                <a href="" class="btn send_fb" @click="sendShare($event); gaclick('share_gold');">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
                                         <g>
                                             <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
@@ -393,7 +404,7 @@
                             <!--填表單-->
                             <div class="form" v-show="purpleStep == 1">
                                 <h1>加入肌膚的有氧教室</h1>
-                                <h2>就有機會獲得<b>BIO金萃黃金比例雙精華</b><br>一起抵抗初老，回復透亮美肌</h2>
+                                <h2>就有機會獲得<b>BIO膠原彈潤超澎精華霜</b><br>一起享受Ｑ彈澎潤美肌</h2>
                                 <ul>
                                     <li><span>姓名</span>
                                         <input type="text" v-model="purpleData.name">
@@ -417,8 +428,8 @@
                             <!--完成-->
                             <div class="success" v-show="purpleStep == 2">
                                 <h1>成功送出資料！</h1>
-                                <h2>感謝參加Bio essence的肌膚有氧教室活動，<br>分享活動到個人Facebook，中獎機率更大喔！</h2>
-                                <a href="" class="btn send_fb" @click="sendShare($event);">
+                                <h2>感謝參加Bio essence<br>肌膚有氧教室活動<span><b><font>分享到個人Facebook</font></b><br><b><font>中獎機率更大喔！</font></b></span></h2>
+                                <a href="" class="btn send_fb" @click="sendShare($event); gaclick('share_bounce');">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="圖層_1" x="0px" y="0px" width="7.483px" height="16px" viewBox="0 0 7.483 16" enable-background="new 0 0 7.483 16" xml:space="preserve">
                                         <g>
                                             <path d="M7.442,0v2.758h-1.5c-0.447,0-0.731,0.122-0.871,0.365C4.969,3.285,4.929,3.569,4.929,3.955v1.257h2.555   L7.18,7.991H4.929V16H1.623V7.991H0V5.212h1.623V3.549c0-1.704,0.588-2.799,1.744-3.265C3.935,0.061,4.421,0,4.929,0H7.442z" />
@@ -447,7 +458,7 @@
                             <h2>活動登錄抽獎活動辦法</h2>
                             <div class="item_block">
                                 <span>活動方式</span>
-                                <p>即日起12/31止，參與【Bio-essence肌膚有氧運動】活動登錄抽獎活動，就有機會抽中好禮！</p>
+                                <p>即日起1/14止，參與【Bio essence肌膚有氧運動】活動登錄抽獎活動，就有機會抽中好禮！</p>
                             </div>
                             <div class="item_block">
                                 <span>活動期間</span>
@@ -498,7 +509,7 @@
                     </section>
                 </div>
             </transition>
-            <!--POP 活動辦法-->
+            <!--POP 隱私權條款-->
             <transition name="fade">
                 <div class="activity private" v-show="priFG">
                     <a href="" class="close" @click="priFG = false" @click.prevent.self></a>
@@ -550,8 +561,8 @@
         <script src="bundle/index.js"></script>
         <!-- Google 再营销代码 -->
         <!--------------------------------------------------
-        再营销代码不得与个人身份信息相关联，也不得放置在与敏感类别相关的网页上。有关如何设置代码的详细信息和说明，请访问：http://google.com/ads/remarketingsetup
-        --------------------------------------------------->
+再营销代码不得与个人身份信息相关联，也不得放置在与敏感类别相关的网页上。有关如何设置代码的详细信息和说明，请访问：http://google.com/ads/remarketingsetup
+--------------------------------------------------->
         <script type="text/javascript">
             /* <![CDATA[ */
             var google_conversion_id = 861129262;

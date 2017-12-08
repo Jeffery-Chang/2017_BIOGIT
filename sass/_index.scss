@@ -21,7 +21,7 @@ section.index {
     height: 700px;
     h1 {
         @include box(480px, auto, null);
-        @include absl(4%, null, null, 27%);
+        @include absl(12%, null, null, 25%);
         p:nth-of-type(1) {
             @include img-scale;
         }
@@ -51,29 +51,29 @@ section.index {
         }
         p.b_3 {
             width: 90px;
-            top: 62%;
+            top: 70%;
             left: 31%;
         }
         p.b_4 {
             width: 237px;
             top: 15%;
-            left: 10%;
+            left: 0%;
             filter: blur(2px);
         }
         p.b_5 {
             width: 300px;
-            top: 45%;
-            right: 5%;
+            top: 52%;
+            right: -5%;
         }
     }
     @media only screen and (max-width: 1680px) {
         h1 {
-            @include absl(4%, null, null, 22%);
+            @include absl(null, null, null, 20%);
         }
     }
     @media only screen and (max-width: 1366px) {
         h1 {
-            @include absl(4%, null, null, 16%);
+            @include absl(null, null, null, 16%);
         }
         .bubble_block {
             p.b_1 {}
@@ -135,10 +135,6 @@ section.index {
 
 
 
-
-
-
-
 /*==========================easy sport==========================*/
 
 section.easy {
@@ -171,14 +167,15 @@ section.easy {
                 @include font-style(50px, $weight, $lineheight, #8c673d, $letterspace);
             }
         }
-        h2 {
-            @include img-scale;
-            margin: 50px auto 0 auto;
-            max-width: 480px;
-        }
         .vivien {
             @include absl(-100%, null, null, -85%);
         }
+    }
+    h2 {
+        @include img-scale;
+        margin: 50px auto 0 auto;
+        max-width: 480px;
+        margin-right: 90px;
     }
     ul.bubble_block {
         margin-left: 350px;
@@ -222,7 +219,7 @@ section.easy {
         .say_con {
             margin-left: 30%;
             width: 70%;
-            padding: 0 20px;
+            padding: 20px 20px 0;
             h1 {
                 p {
                     width: 100%;
@@ -242,11 +239,6 @@ section.easy {
                     @include font-style(35px, null, null, null, null);
                 }
             }
-            h2 {
-                width: 130%;
-                margin-top: 30px;
-                margin-left: -18%;
-            }
             .vivien {
                 @include img-scale;
                 width: 65%;
@@ -254,11 +246,18 @@ section.easy {
                 left: -53%;
             }
         }
+        h2 {
+            margin: 0 auto;
+            margin-top: 60px;
+            position: relative;
+            z-index: 5;
+            width: 80%;
+        }
         ul.bubble_block {
             margin-left: 0;
             width: 100%;
             font-size: 0;
-            margin-top: 80px;
+            margin-top: 35px;
             li {
                 width: 24%;
             }
@@ -299,10 +298,6 @@ section.easy {
         }
     }
 }
-
-
-
-
 
 
 
@@ -464,10 +459,6 @@ section.patent {
 
 
 
-
-
-
-
 /*==========================famous==========================*/
 
 section.famous {
@@ -525,7 +516,7 @@ section.famous {
             margin: 40px auto;
         }
         ul {
-            width: 2000px;
+            width: 100%;
             text-align: left;
             li {
                 display: inline-block;
@@ -538,6 +529,17 @@ section.famous {
                         @include img-scale;
                         width: 217px;
                         margin: 0 auto 10px;
+                        span {
+                            opacity: 0;
+                            @include allcenter;
+                            @include transition(.3s ease-out);
+                            margin-left: -10px;
+                            display: inline-block;
+                            color: #fff;
+                            line-height: 1.2;
+                            padding: 5px 0;
+                            background: rgba(135, 94, 11, 0.6);
+                        }
                         &:before {
                             content: '';
                             display: inline-block;
@@ -553,6 +555,12 @@ section.famous {
                     }
                     p.name {
                         @include font-style(24px, 400, null, null, null);
+                    }
+                    p.shortWord {
+                        display: block;
+                        br {
+                            display: none;
+                        }
                     }
                     b {
                         @include box(50px, 3px, #D59E3F);
@@ -572,6 +580,10 @@ section.famous {
                         p.photo {
                             &:before {
                                 @include absl(0, null, null, 5px);
+                            }
+                            span {
+                                opacity: 1;
+                                margin-left: 0px;
                             }
                         }
                         b {
@@ -623,9 +635,19 @@ section.famous {
                         p.photo {
                             width: 45%;
                             margin: 0 auto;
+                            span {
+                                opacity: 1;
+                                margin-left: 0;
+                            }
                             &:before {
                                 width: 100%;
                                 @include absl(0, null, null, -10px);
+                            }
+                        }
+                        p.shortWord {
+                            @include font-style(13px, null, null, null, null);
+                            br {
+                                display: block;
                             }
                         }
                         .tt {
@@ -674,6 +696,24 @@ section.famous {
         padding-top: 150px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -749,14 +789,71 @@ section.pdt_block {
                 position: absolute;
                 bottom: -75px;
                 left: 50%;
+                text-align: center;
                 @include translateX(-50%);
                 @include img-scale;
-                width: 120px;
+                @include font-style(15px, 400, 50px, white, null);
+                @include box(140px, 50px, null);
                 @include transition(.3s ease-out);
-                &:hover {
-                    //bottom: -72px;
-                    //filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.4));
+                &:after {
+                    content: '';
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-top: 6px solid transparent;
+                    border-right: none;
+                    border-bottom: 6px solid transparent;
+                    border-left: 10px solid white;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                    margin-top: -2px;
+                    -moz-animation: bounce 1.5s infinite;
+                    -webkit-animation: bounce 1.5s infinite;
+                    animation: bounce 1.5s infinite;
                 }
+                &:hover {
+                    &:after {
+                        -moz-animation: bounce 0s infinite;
+                        -webkit-animation: bounce 0s infinite;
+                        animation: bounce 0s infinite;
+                    }
+                }
+                span.flash {
+                    overflow: hidden;
+                    position: absolute;
+                    left: 0%;
+                    top: 0%;
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        height: 130px;
+                        width: 87px;
+                        top: 0;
+                        left: 0;
+                        opacity: 1;
+                        background: url(../img/light.png) no-repeat top left;
+                        background-size: 100%;
+                        -moz-animation: flashLight 2s infinite;
+                        -webkit-animation: flashLight 2s infinite;
+                        animation: flashLight 2s infinite;
+                        // animation-timing-function: linear;
+                        // // animation-fill-mode: both;
+                    }
+                }
+            }
+            img {
+                margin-bottom: 20px;
+            }
+            a.gold {
+                background: url(../img/btn_gold.png) no-repeat top left;
+                background-size: 100%;
+            }
+            a.purple {
+                background: url(../img/btn_purple.png) no-repeat top left;
+                background-size: 100%;
             }
         }
         p.board_gold {
@@ -803,7 +900,7 @@ section.pdt_block {
                         @include font-style(15px, 400, 45px, white, null);
                     }
                 }
-                .open{
+                .open {
                     width: 80%;
                     @include img-scale;
                     margin: 20px auto 0;
@@ -893,10 +990,6 @@ section.pdt_block {
 
 
 
-
-
-
-
 /*==========================lottery==========================*/
 
 section.lottery {
@@ -959,6 +1052,9 @@ section.lottery {
                 @include font-style(17px, 400, 73px, white, null);
                 @include box(202px, 73px, null);
                 @include transition(.3s ease-out);
+                -moz-animation: scale 1.5s infinite;
+                -webkit-animation: scale 1.5s infinite;
+                animation: scale 1.5s infinite;
                 &:after {
                     content: '';
                     display: inline-block;
@@ -969,14 +1065,14 @@ section.lottery {
                     border-bottom: 8px solid transparent;
                     border-left: 12px solid white;
                     vertical-align: middle;
-                    margin-left: 10px;
+                    margin-left: 15px;
                     margin-top: -2px;
-                    @include transition(.3s ease-out);
                 }
                 &:hover {
-                    &:after {
-                        margin-left: 20px;
-                    }
+
+                    -moz-animation: scale 0s infinite;
+                    -webkit-animation: scale 0s infinite;
+                    animation: scale 0s infinite;
                 }
             }
         }
@@ -1069,6 +1165,9 @@ section.lottery {
                     width: 85%;
                     @include font-style(14px, null, null, null, null);
                     margin: 10px auto;
+                    -moz-animation: scale 0s infinite;
+                    -webkit-animation: scale 0s infinite;
+                    animation: scale 0s infinite;
                 }
                 p.pdt {
                     @include img-scale;
@@ -1161,6 +1260,24 @@ section.lottery {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*==========================POP==========================*/
 
 .pop {
@@ -1232,7 +1349,29 @@ section.lottery {
             }
             h2 {
                 padding: 0 80px;
-                margin-bottom: 30px;
+                margin-bottom: 0px;
+                span {
+                    display: block;
+                    margin: 5px 0 15px 0;
+                    @include font-style(16px, 500, null, #3D64AD, null);
+                    b {
+                        display: inline-block;
+                        position: relative;
+                        padding: 0 5px;
+                        font {
+                            position: relative;
+                            z-index: 2;
+                        }
+                        &:after {
+                            content: '';
+                            display: inline-block;
+                            @include box(100%, 9px, #fce8c0);
+                            @include absl(null, null, 0px, 50%);
+                            @include translateX(-50%);
+                            z-index: 0;
+                        }
+                    }
+                }
             }
         }
         .fail {
@@ -1268,6 +1407,10 @@ section.lottery {
         a.send_purple {
             background: url(../img/btn_purple.png) no-repeat top center;
             background-size: 100%;
+        }
+        a.send_fb {
+            background-color: #4165af;
+            @include border-radius(5px);
         }
     }
     section.gold {
@@ -1397,6 +1540,13 @@ section.lottery {
                 }
                 h2 {
                     padding: 0 20px;
+                    span {
+                        b {
+                            br {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
             .fail {
@@ -1451,6 +1601,13 @@ section.lottery {
                         display: none;
                     }
                 }
+            }
+        }
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-width: 374px) and (orientation: portrait) {
+        section .success h2 {
+            span {
+                @include font-style(14px, null, null, null, null);
             }
         }
     }
@@ -1518,6 +1675,24 @@ section.lottery {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*==========================活動辦法==========================*/
 
 .activity {
@@ -1527,7 +1702,7 @@ section.lottery {
     top: 0;
     left: 0;
     z-index: 101;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 6px;
     section {
         @include box(100%, auto, white);
@@ -1743,6 +1918,21 @@ section.lottery {
     }
 }
 
+.private section {
+    h2 {
+        margin: 20px auto;
+    }
+    article {
+        text-align: left;
+    }
+    .item_block {
+        margin-top: 30px;
+        ul.list {
+            width: 100%;
+        }
+    }
+}
+
 a.close {
     display: inline-block;
     @include box(70px, 70px, null);
@@ -1776,5 +1966,8 @@ a.close {
         @include scale(0.5);
         top: -6px;
         right: -6px;
+        &:hover {
+            @include scale(0.5);
+        }
     }
 }
