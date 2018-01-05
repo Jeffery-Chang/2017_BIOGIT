@@ -63,6 +63,13 @@ window.requestAnimFrame = (function(){
                     this.gaV3 = false;
                 }
             },
+            endGame: function(){
+                var endTime = Date.parse('2018/01/15 00:00:00').valueOf();
+                var nowTime = Date.parse(new Date()).valueOf();
+                var result = nowTime >= endTime;
+                
+                return result;
+            },
             setOverFlow: function(){
                 document.body.style.cssText = (this.loadFG == false || this.goldFG == true || this.purpleFG == true || this.actFG == true) ? 'overflow-y: hidden' : '';
             },
@@ -395,6 +402,15 @@ window.requestAnimFrame = (function(){
 
                 (type === 'gold') ? gaclick('gold') :  gaclick('bounce');
             },
+            openForm: function(type, ganame){
+                if(this.endGame()){
+                    alert('活動已結束！\n獲獎名單將於1/25公布！');
+                    return;
+                }
+                
+                this.$data[type] = true;
+                gaclick(ganame);
+            },
             sendShare: function(evt){
                 evt.preventDefault();
                 var date = new Date();
@@ -406,6 +422,7 @@ window.requestAnimFrame = (function(){
             },
             sendData: function(evt, type){
                 if(evt) evt.preventDefault();
+                if(this.endGame()) return;
                 var $this = this;
                 var err = '';
                 var read = false;
@@ -431,7 +448,7 @@ window.requestAnimFrame = (function(){
                     alert(err);
                     return;
                 }
-
+                
                 $.ajax({
                     method: "POST",
                     url: 'https://bioessence.webgene.com.tw/api/Send_User',

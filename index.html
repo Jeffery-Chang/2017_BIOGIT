@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>肌膚的有氧教室｜Bio essence</title>
@@ -326,14 +326,14 @@
                                         <h4>
                                             <span>抗</span>初老
                                         </h4>
-                                        <a href="" @click="goldFG = true; gaclick('biogold');" @click.prevent.self>我要透亮年輕</a>
+                                        <a href="" @click.prevent.self="openForm('goldFG', 'biogold');">我要透亮年輕</a>
                                     </div>
                                     <div class="purple_box">
                                         <p class="pdt"><img src="img/sign_pdt_purple.png" alt=""></p>
                                         <h4>
                                             <span>超</span>彈潤
                                         </h4>
-                                        <a href="" @click="purpleFG = true; gaclick('biobounce');" @click.prevent.self>我要肌膚Q彈</a>
+                                        <a href="" @click.prevent.self="openForm('purpleFG', 'biobounce');">我要肌膚Q彈</a>
                                     </div>
                                     <p class="tt">兩堂肌膚有氧運動你想體驗哪一道呢？</p>
                                 </div>
@@ -576,6 +576,5 @@
                 <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/861129262/?guid=ON&amp;script=0"/>
             </div>
         </noscript>
-
     </body>
 </html>
