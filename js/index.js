@@ -15,7 +15,7 @@ window.requestAnimFrame = (function(){
             goldFG: false, goldStep: 1,
             purpleFG: false, purpleStep: 1,
             switchCnt: 2,
-            actFG: false,
+            actFG: true,
             priFG: false,
             gaV3: true, gaV5: true, gaV6: true,
             goldData:{ name: '', phone: '', address: '', gift: 'A' },
